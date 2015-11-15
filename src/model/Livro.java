@@ -21,37 +21,28 @@ public class Livro {
      * @param editoraIn - recebe a editora do livro
      * @param anoPublicacaoIn - recebe o ano da publicação do livro
      */
-    public Livro(Long isbnIn, String tituloIn, String autorIn, String editoraIn, String anoPublicacaoIn) {
+
+    public Livro(Long isbnIn, String tituloIn, String editoraIn, String autorIn, String anoPublicacaoIn) {   
         this.isbn = isbnIn;
         this.titulo = tituloIn;
-        this.autor = autorIn;
         this.editora = editoraIn;
+        this.autor = autorIn;  
         this.anoPublicacao = anoPublicacaoIn;
         this.disponibilidade = true;
         this.qntdeTotalAlugado = 0;
     }
-
-    public Livro(int codIn, Long isbnIn, String tituloIn, String autorIn, String editoraIn, String anoPublicacaoIn) {
+    
+     public Livro(int codIn, Long isbnIn, String tituloIn, String editoraIn, String autorIn, String anoPublicacaoIn, boolean disponibilidadeIn, int qntdeTotalAlugadoIn) {
         this.cod = codIn;
         this.isbn = isbnIn;
         this.titulo = tituloIn;
-        this.autor = autorIn;
         this.editora = editoraIn;
-        this.anoPublicacao = anoPublicacaoIn;
-        this.disponibilidade = true;
-        this.qntdeTotalAlugado = 0;
-    }
-
-    public Livro(Long isbnIn, String tituloIn, String autorIn, String editoraIn, String anoPublicacaoIn, boolean disponibilidadeIn, int qntdeTotalAlugadoIn) {
-        this.isbn = isbnIn;
-        this.titulo = tituloIn;
-        this.autor = autorIn;
-        this.editora = editoraIn;
+        this.autor = autorIn;  
         this.anoPublicacao = anoPublicacaoIn;
         this.disponibilidade = disponibilidadeIn;
         this.qntdeTotalAlugado = qntdeTotalAlugadoIn;
     }
-     
+    
     public void setIsbn(Long isbnIn) {
         this.isbn = isbnIn;
     }

@@ -37,12 +37,6 @@ public class Cliente {
         this.livrosAlugados = 0;
         this.qntdelivrosalugados = 0;
     }
-
-     public Cliente(String nomeIn, long rgIn, String telefoneIn) {
-        this.nome = nomeIn;
-        this.rg = rgIn;
-        this.telefone = telefoneIn;
-    }
      
     public void setNome(String nomeIn) {
         this.nome = nomeIn;
@@ -102,7 +96,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Nome: " + getNome() + "\n RG: " +getRg()+ "\nTelefone: " + getTelefone() + "\nMatricula: " + getMatricula() + "\nQuantidade de livros alugados: " + getLivrosAlugados() + "\n";
+        return "Nome: " + getNome() + "\nRG: " +getRg()+ "\nTelefone: " + getTelefone() + "\nMatricula: " + getMatricula() + "\nQuantidade de livros alugados: " + getLivrosAlugados() + "\n";
     }
 
 }

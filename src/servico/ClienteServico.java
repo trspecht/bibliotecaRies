@@ -29,6 +29,26 @@ public class ClienteServico {
             return false;
         }
     }
+    
+    public boolean nomeExiste(String nome) {
+        ClienteDao dao = new ClienteDaoBd();
+        Cliente cliente = dao.procurarPorNome(nome);
+        if (cliente != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean matriculaExiste(int id) {
+        ClienteDao dao = new ClienteDaoBd();
+        Cliente cliente = dao.procurarPorId(id);
+        if (cliente != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public long randomMatricula() {
         Date n = new Date();
@@ -54,12 +74,30 @@ public class ClienteServico {
         Cliente cliente = dao.procurarPorRg(rg);
         return (cliente);
     }
-
-    public void editarCliente(Cliente c) {
+    
+    public Cliente buscarClientePorNome(String nome) {
         ClienteDao dao = new ClienteDaoBd();
-        dao.atualizar(c);
+        Cliente cliente = dao.procurarPorNome(nome);
+        return (cliente);
     }
-
+    
+    public void editarCliente(String op, String novoValor, Cliente c) {
+        ClienteDao dao = new ClienteDaoBd();
+        if (op.equals("1")) {
+            dao.editar(c, novoValor, "nome");
+        }
+        if (op.equals("2")) {
+            dao.editar(c, novoValor, "telefone");
+        }
+    }
+    
+    public void editarCliente(String op, long novoValor, Cliente c) {
+        ClienteDao dao = new ClienteDaoBd();
+        if (op.equals("3")) {
+            dao.editar(c, novoValor, "rg");
+        }
+    }
+    
     public void deletarCliente(Cliente c) {
         ClienteDao dao = new ClienteDaoBd();
         dao.deletar(c);

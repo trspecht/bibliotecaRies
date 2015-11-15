@@ -66,25 +66,33 @@ public class LivroDaoBd implements LivroDao {
     }
 
     @Override
-    public void atualizar(Livro livro) {
+    public void editar(Livro l, String novoX, String coluna) {
+        String sql = "UPDATE livro SET " + coluna + "=(?) WHERE cod=(?)";
         try {
-            String sql = "UPDATE livro SET isbn=?, titulo=?, editora=?, autor=?, anoPublicacao=? WHERE cod=?";
-
             conectar(sql);
-            comando.setLong(1, livro.getIsbn());
-            comando.setString(2, livro.getTitulo());
-            comando.setString(3, livro.getEditora());
-            comando.setString(4, livro.getAutor());
-            comando.setString(5, livro.getAnoPublicacao());
-            comando.setInt(6, livro.getCod());
+            comando.setString(1, novoX);
+            comando.setInt(2, l.getCod());
             comando.executeUpdate();
-
         } catch (SQLException ex) {
             Logger.getLogger(LivroDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }
-
+    }
+    
+    @Override
+    public void editar(Livro l, long novoX, String coluna) {
+        String sql = "UPDATE livro SET " + coluna + "=(?) WHERE cod=(?)";
+        try {
+            conectar(sql);
+            comando.setLong(1, novoX);
+            comando.setInt(2, l.getCod());
+            comando.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(LivroDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
     }
 
     @Override
@@ -99,6 +107,7 @@ public class LivroDaoBd implements LivroDao {
             ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
+                int cod = resultado.getInt("cod");
                 long isbn = resultado.getLong("isbn");
                 String titulo = resultado.getString("titulo");
                 String editora = resultado.getString("editora");
@@ -107,7 +116,7 @@ public class LivroDaoBd implements LivroDao {
                 Boolean disponibilidade = resultado.getBoolean("disponibilidade");
                 int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
                 
-                Livro livro = new Livro(isbn, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
+                Livro livro = new Livro(cod, isbn, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
 
                 listaLivros.add(livro);
 
@@ -133,13 +142,16 @@ public class LivroDaoBd implements LivroDao {
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
+                int cod = resultado.getInt("cod");
                 long isbnX = resultado.getLong("isbn");
                 String titulo = resultado.getString("titulo");
                 String editora = resultado.getString("editora");
                 String autor = resultado.getString("autor");
                 String anoPublicacao = resultado.getString("anoPublicacao");
+                boolean disponibilidade = resultado.getBoolean("disponibilidade");
+                int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
 
-                Livro livro = new Livro(isbnX, titulo, editora, autor, anoPublicacao);
+                Livro livro = new Livro(cod, isbnX, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
 
                 return livro;
 
@@ -165,13 +177,16 @@ public class LivroDaoBd implements LivroDao {
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
+                int cod = resultado.getInt("cod");
                 long isbn = resultado.getLong("isbn");
                 String tituloX = resultado.getString("titulo");
                 String editora = resultado.getString("editora");
                 String autor = resultado.getString("autor");
                 String anoPublicacao = resultado.getString("anoPublicacao");
+                boolean disponibilidade = resultado.getBoolean("disponibilidade");
+                int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
 
-                Livro livro = new Livro(isbn, tituloX, editora, autor, anoPublicacao);
+                Livro livro = new Livro(cod, isbn, tituloX, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
 
                 return livro;
 
@@ -197,13 +212,16 @@ public class LivroDaoBd implements LivroDao {
             ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
+                int cod = resultado.getInt("cod");
                 long isbn = resultado.getLong("isbn");
                 String tituloX = resultado.getString("titulo");
                 String editora = resultado.getString("editora");
                 String autor = resultado.getString("autor");
                 String anoPublicacao = resultado.getString("anoPublicacao");
+                boolean disponibilidade = resultado.getBoolean("disponibilidade");
+                int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
 
-                Livro livro = new Livro(isbn, tituloX, editora, autor, anoPublicacao);
+                Livro livro = new Livro(cod, isbn, tituloX, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
 
                 listaLivros.add(livro);
             }

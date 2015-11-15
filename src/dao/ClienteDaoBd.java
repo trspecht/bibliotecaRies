@@ -71,26 +71,35 @@ public class ClienteDaoBd implements ClienteDao {
     }
 
     @Override
-    public void atualizar(Cliente cliente) {
+    public void editar(Cliente c, String novoX, String coluna) {
+        String sql = "UPDATE cliente SET " + coluna + "=(?) WHERE id=(?)";
         try {
-            String sql = "UPDATE cliente SET rg=? nome=?, telefone=?"
-                    + "WHERE id=?";
-
             conectar(sql);
-            comando.setLong(1, cliente.getRg());
-            comando.setString(2, cliente.getNome());
-            comando.setString(3, cliente.getTelefone());
-            comando.setInt(4, cliente.getId());
+            comando.setString(1, novoX);
+            comando.setInt(2, c.getId());
             comando.executeUpdate();
-
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }
-
     }
-
+    
+    @Override
+    public void editar(Cliente c, long novoX, String coluna) {
+        String sql = "UPDATE cliente SET " + coluna + "=(?) WHERE id=(?)";
+        try {
+            conectar(sql);
+            comando.setLong(1, novoX);
+            comando.setInt(2, c.getId());
+            comando.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+    }
+    
     @Override
     public List<Cliente> listar() {
         List<Cliente> listaClientes = new ArrayList<>();
@@ -188,6 +197,38 @@ public class ClienteDaoBd implements ClienteDao {
         return (null);
     }
 
+    @Override
+    public Cliente procurarPorNome(String nome) {
+        String sql = "SELECT * FROM cliente WHERE nome = ?";
+
+        try {
+            conectar(sql);
+            comando.setString(1, nome);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                int id = resultado.getInt("id");
+                String nomeX = resultado.getString("nome");
+                long rg = resultado.getLong("rg");
+                String telefone = resultado.getString("telefone");
+                long matricula = resultado.getLong("matricula");
+
+                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula);
+
+                return cli;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+
+        return (null);
+    }
+    
     @Override
     public Cliente procurarPorMatricula(long matricula) {
         String sql = "SELECT * FROM cliente WHERE matricula = ?";

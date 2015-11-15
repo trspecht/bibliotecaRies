@@ -45,9 +45,27 @@ public class LivroServico {
         return (livro);
     }
 
-    public void editarLivro(Livro l) {
+    public void editarLivro(String op, long novoX, Livro l) {
         LivroDao dao = new LivroDaoBd();
-        dao.atualizar(l);
+        if (op.equals("1")) {
+            dao.editar(l, novoX, "isbn");
+        }
+    }
+
+    public void editarLivro(String op, String novoX, Livro l) {
+        LivroDao dao = new LivroDaoBd();
+        if (op.equals("2")) {
+            dao.editar(l, novoX, "titulo");
+        }
+        if (op.equals("3")) {
+            dao.editar(l, novoX, "editora");
+        }
+        if (op.equals("4")) {
+            dao.editar(l, novoX, "autor");
+        }
+        if (op.equals("5")) {
+            dao.editar(l, novoX, "anoPublicacao");
+        }
     }
 
     public void deletarLivro(Livro l) {
@@ -77,7 +95,7 @@ public class LivroServico {
     public boolean validarAnoPublicacao(String campo) {
         return campo.matches("[0-9]{4}+");
     }
-    
+
     public void livrosMaisRetirados() {
         List<Livro> listaLivroTemp = new LivroDaoBd().listar();
         Collections.sort(listaLivroTemp, new livroCompRetirados());

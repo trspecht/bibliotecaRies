@@ -36,6 +36,9 @@ public class LivroUI {
                 case LivroMenu.OP_LISTAR:
                     mostrarLivro();
                     break;
+                case LivroMenu.OP_PROCURARLIVRO:
+                    procurarLivro();
+                    break;
                 case LivroMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu principal..");
                     break;
@@ -52,20 +55,26 @@ public class LivroUI {
         if (servicoL.LivroExiste(isbn) == true) {
             System.out.println("Isbn já existe no cadastro");
             return;
-        } else {
-            String titulo = Console.scanString("Titulo: ");
-            String editora = Console.scanString("Editora: ");
-            String autor = Console.scanString("Autor(es): ");
-            String anoPublicacao = Console.scanString("Ano de Publicação ex: xxxx: ");
-            while (servicoL.validarAnoPublicacao(anoPublicacao) != true) {
-                anoPublicacao = Console.scanString("Ano de publicação inválido, digite novamente: ");
-            }
-            boolean disponibilidade = true;
-            int qntdeTotalAlugado = 0;
-
-            servicoL.addLivro(new Livro(isbn, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado));
-            System.out.println("Livro " + titulo + " cadastrado com sucesso!");
         }
+        String titulo = Console.scanString("Titulo: ");
+        while (titulo == null || titulo.trim().length() == 0) {
+            titulo = Console.scanString("Titulo inválido, digite novamente: ");
+        }
+        String editora = Console.scanString("Editora: ");
+        while (editora == null || editora.trim().length() == 0) {
+            editora = Console.scanString("Editora inválida, digite novamente: ");
+        }
+        String autor = Console.scanString("Autor(es): ");
+        while (autor == null || autor.trim().length() == 0) {
+            autor = Console.scanString("Autor(es) inválido, digite novamente: ");
+        }
+        String anoPublicacao = Console.scanString("Ano de Publicação ex: xxxx: ");
+        while (servicoL.validarAnoPublicacao(anoPublicacao) != true || anoPublicacao == null) {
+            anoPublicacao = Console.scanString("Ano de publicação inválido, digite novamente: ");
+        }
+
+        servicoL.addLivro(new Livro(isbn, titulo, editora, autor, anoPublicacao));
+        System.out.println("Livro " + titulo + " cadastrado com sucesso!");
     }
 
     public void mostrarLivro() {
@@ -89,30 +98,67 @@ public class LivroUI {
 
     private void editarLivro() {
         long isbn = Console.scanLong("Isbn do livro a ser editado: ");
-        if (!servicoL.LivroExiste(isbn)) {
+        if (servicoL.LivroExiste(isbn) == false) {
             System.out.println("Livro não existe no cadastro");
-        } else {
-            Livro livro = servicoL.buscarLivroPorIsbn(isbn);
-            isbn = Console.scanLong("Isbn (Atual: " + livro.getIsbn() + "):");
-            while (servicoL.LivroExiste(isbn)) {
-                isbn = Console.scanLong("Isbn já existe em nosso sistema, favor verifique o número e digite novamente: ");
-            }
-            String titulo = Console.scanString("Titulo (Atual: " + livro.getTitulo() + "):");
-            String editora = Console.scanString("Editora (Atual: " + livro.getEditora() + "):");
-            String autor = Console.scanString("Autor(es) (Atual: " + livro.getAutor() + "):");
-            String anoPublicacao = Console.scanString("Ano de Publicação ex: xxxx: (Atual: " + livro.getAnoPublicacao() + "):");
-            while (servicoL.validarAnoPublicacao(anoPublicacao) != true) {
-                anoPublicacao = Console.scanString("Ano de publicação inválido, digite novamente: ");
-            }           
-            livro.setIsbn(isbn);
-            livro.setTitulo(titulo);
-            livro.setEditora(editora);
-            livro.setAutor(autor);
-            livro.setAnoPublicacao(anoPublicacao);
-            servicoL.editarLivro(livro);
-            System.out.println("Livro " + titulo + " alterado com sucesso!");
+            return;
         }
-
+        Livro livro = servicoL.buscarLivroPorIsbn(isbn);
+        System.out.println(livro);
+        String op = Console.scanString("O que deseja alterar? \n1- Isbn: \n2- Titulo: \n3- Editora: \n4- Autor(es): \n5- Ano de Publicação: \n6- Voltar: \n");
+        switch (op) {
+            case "1": {
+                long novoIsbn = Console.scanLong("Digite o novo Isbn: ");
+                while (servicoL.LivroExiste(novoIsbn) == true) {
+                    novoIsbn = Console.scanLong("Isbn já existe em nosso sistema, favor verifique e digite novamente: ");
+                }
+                servicoL.editarLivro(op, novoIsbn, livro);
+                System.out.println("Isbn alterado com sucesso!");
+                break;
+            }
+            case "2": {
+                String novoTitulo = Console.scanString("Digite o novo Titulo: ");
+                while (novoTitulo == null || novoTitulo.trim().length() == 0) {
+                    novoTitulo = Console.scanString("Titulo inválido, digite novamente: ");
+                }
+                servicoL.editarLivro(op, novoTitulo, livro);
+                System.out.println("Titulo alterado com sucesso!");
+                break;
+            }
+            case "3": {
+                String novaEditora = Console.scanString("Digite a nova editora: ");
+                while (novaEditora == null || novaEditora.trim().length() == 0) {
+                    novaEditora = Console.scanString("Editora inválida, digite novamente: ");
+                }
+                servicoL.editarLivro(op, novaEditora, livro);
+                System.out.println("Editora alterada com sucesso!");
+                break;
+            }
+            case "4": {
+                String novoAutor = Console.scanString("Digite o novo Autor: ");
+                while (novoAutor == null || novoAutor.trim().length() == 0) {
+                    novoAutor = Console.scanString("Autor(es) inválido, digite novamente: ");
+                }
+                servicoL.editarLivro(op, novoAutor, livro);
+                System.out.println("Autor(es) alterado com sucesso!");
+                break;
+            }
+            case "5": {
+                String novoAnoPublicacao = Console.scanString("Digite o novo ano de publicação xxxx: ");
+                while (servicoL.validarAnoPublicacao(novoAnoPublicacao) != true || novoAnoPublicacao == null) {
+                    novoAnoPublicacao = Console.scanString("Ano de publicação inválido, digite novamente: ");
+                }
+                servicoL.editarLivro(op, novoAnoPublicacao, livro);
+                System.out.println("Ano de publicação alterado com sucesso!");
+                break;
+            }
+            case "6": {
+                return;
+            }
+            default: {
+                System.out.println("Opção inválida!");
+                break;
+            }
+        }
     }
 
     private void deletarLivro() {
@@ -122,6 +168,7 @@ public class LivroUI {
         } else {
             Livro livro = servicoL.buscarLivroPorIsbn(isbn);
             System.out.println("Informações do Livro:");
+            System.out.println("Código: " + livro.getCod());
             System.out.println("Isbn: " + livro.getIsbn());
             System.out.println("Titulo: " + livro.getTitulo());
             System.out.println("Editora: " + livro.getEditora());
@@ -130,14 +177,52 @@ public class LivroUI {
             System.out.println("Quantidade de vezes que foi alugado: " + livro.getQntdeTotalAlugado());
 
             String confirmacao = Console.scanString("Deseja realmente remover o livro "
-                    + livro.getTitulo() + "? (sim/nao)");
+                    + livro.getTitulo() + "? (Sim/Não)");
             if (confirmacao.equalsIgnoreCase("sim")) {
-                servicoL.deletarLivro(livro);
-                System.out.println("Livro " + livro.getTitulo() + " deletado com sucesso!");
+                if (livro.isDisponibilidade() == false) {
+                    System.out.println("Livro está alugado, esperar efetuarem a entrega para excluir do sistema!");
+                } else {
+                    servicoL.deletarLivro(livro);
+                    System.out.println("Livro " + livro.getTitulo() + " deletado com sucesso!");
+                }
             } else {
                 System.out.println("Operação cancelada!");
             }
 
         }
     }
+
+    private void procurarLivro() {
+        String op = Console.scanString("Como deseja efetuar a busca do livro? \n1- Procurar por Isbn \n2- Procurar por Titulo \n3- Voltar \n");
+        switch (op) {
+            case "1": {
+                long novoIsbn = Console.scanLong("Digite o Isbn do livro: ");
+                if (servicoL.LivroExiste(novoIsbn) == false) {
+                    System.out.println("Livro não cadastrado!");
+                    return;
+                }
+                Livro livro = servicoL.buscarLivroPorIsbn(novoIsbn);
+                System.out.println(livro);
+                break;
+            }
+            case "2": {
+                String novoTitulo = Console.scanString("Digite o titulo do livro: ");
+                if (servicoL.LivroExiste(novoTitulo) == false) {
+                    System.out.println("Livro não cadastrado!");
+                    return;
+                }
+                Livro livro = servicoL.buscarLivroPorTitulo(novoTitulo);
+                System.out.println(livro);
+                break;
+            }
+            case "3": {
+                return;
+            }
+            default: {
+                System.out.println("Opção inválida!");
+                break;
+            }
+        }
+    }
+
 }
