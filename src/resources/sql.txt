@@ -15,16 +15,16 @@ titulo VARCHAR(100) NOT NULL,
 editora VARCHAR(100) NOT NULL,
 autor VARCHAR(100) NOT NULL,
 anoPublicacao VARCHAR(4) NOT NULL,
-disponibilidade text NOT NULL,
+disponibilidade boolean,
 qntdeTotalAlugado INTEGER NOT NULL
 );
 
-CREATE TABLE consulta (
-codigo serial primary key,
-horario timestamp,
-prontuario varchar(50),
-idPaciente int REFERENCES paciente(id),
-finalizado boolean
+CREATE TABLE aluguel (
+idAluguel SERIAL PRIMARY KEY NOT NULL,
+codigo BIGINT NOT NULL,
+data DATE,
+id int REFERENCES cliente(id),
+cod int REFERENCES livro(cod)
 );
 
 CREATE TABLE itemreceituario (

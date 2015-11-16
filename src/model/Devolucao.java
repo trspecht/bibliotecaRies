@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Devolucao {
     
-    private int cod;
+    private int codDevolucao, codigoCliente, codigoLivro;
     private Date dataDevolucao;
     private Aluguel a;
 
@@ -29,8 +29,10 @@ public class Devolucao {
         this.dataDevolucao = data;
     }
 
-     public Devolucao(int codIn, Aluguel aIn) {
-        this.cod = codIn;
+     public Devolucao(int codIn, int codCliente, int codLivro, Aluguel aIn) {
+        this.codDevolucao = codIn;
+        this.codigoCliente = codCliente;
+        this.codigoLivro = codLivro;
         this.a = aIn;
         Date data = new Date();
         this.dataDevolucao = data;

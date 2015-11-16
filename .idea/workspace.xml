@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0a6845c-b67c-447d-a46b-067d4a107f68" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/Cliente.class" afterPath="$PROJECT_DIR$/build/classes/model/Cliente.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/dao/ClienteDao.class" afterPath="$PROJECT_DIR$/build/classes/dao/ClienteDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/dao/ClienteDaoBd.class" afterPath="$PROJECT_DIR$/build/classes/dao/ClienteDaoBd.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/view/menu/ClienteMenu.class" afterPath="$PROJECT_DIR$/build/classes/view/menu/ClienteMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/ClienteServico$ClienteCompAluguel.class" afterPath="$PROJECT_DIR$/build/classes/servico/ClienteServico$ClienteCompAluguel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/ClienteServico.class" afterPath="$PROJECT_DIR$/build/classes/servico/ClienteServico.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/view/ClienteUI.class" afterPath="$PROJECT_DIR$/build/classes/view/ClienteUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/model/Livro.class" afterPath="$PROJECT_DIR$/build/classes/model/Livro.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/dao/LivroDao.class" afterPath="$PROJECT_DIR$/build/classes/dao/LivroDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/dao/LivroDaoBd.class" afterPath="$PROJECT_DIR$/build/classes/dao/LivroDaoBd.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/view/menu/LivroMenu.class" afterPath="$PROJECT_DIR$/build/classes/view/menu/LivroMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/LivroServico$livroCompRetirados.class" afterPath="$PROJECT_DIR$/build/classes/servico/LivroServico$livroCompRetirados.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/LivroServico.class" afterPath="$PROJECT_DIR$/build/classes/servico/LivroServico.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/view/LivroUI.class" afterPath="$PROJECT_DIR$/build/classes/view/LivroUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Cliente.java" afterPath="$PROJECT_DIR$/src/model/Cliente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/ClienteDao.java" afterPath="$PROJECT_DIR$/src/dao/ClienteDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/ClienteDaoBd.java" afterPath="$PROJECT_DIR$/src/dao/ClienteDaoBd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/menu/ClienteMenu.java" afterPath="$PROJECT_DIR$/src/view/menu/ClienteMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servico/ClienteServico.java" afterPath="$PROJECT_DIR$/src/servico/ClienteServico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/ClienteUI.java" afterPath="$PROJECT_DIR$/src/view/ClienteUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Livro.java" afterPath="$PROJECT_DIR$/src/model/Livro.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/LivroDao.java" afterPath="$PROJECT_DIR$/src/dao/LivroDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/LivroDaoBd.java" afterPath="$PROJECT_DIR$/src/dao/LivroDaoBd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/menu/LivroMenu.java" afterPath="$PROJECT_DIR$/src/view/menu/LivroMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servico/LivroServico.java" afterPath="$PROJECT_DIR$/src/servico/LivroServico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/LivroUI.java" afterPath="$PROJECT_DIR$/src/view/LivroUI.java" />
-    </list>
+    <list default="true" id="c0a6845c-b67c-447d-a46b-067d4a107f68" name="Default" comment="" />
     <ignored path="bibliotecaRies.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -79,10 +52,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LivroDao.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LivroDao.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dao/LivroDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.1590106">
               <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
               <folding />
             </state>
@@ -99,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Aluguel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Aluguel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Aluguel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43992934">
-              <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -374,7 +347,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="976" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -385,7 +358,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18131869" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18131869" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -484,10 +457,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/LivroDao.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.7937062">
+          <caret line="242" column="19" selection-start-line="242" selection-start-column="19" selection-end-line="242" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Aluguel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -500,17 +480,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+    <entry file="file://$PROJECT_DIR$/src/dao/LivroDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.7937062">
-          <caret line="242" column="19" selection-start-line="242" selection-start-column="19" selection-end-line="242" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Aluguel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43992934">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.1590106">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding />
         </state>
       </provider>

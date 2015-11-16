@@ -1,5 +1,6 @@
 package util;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,5 +31,9 @@ public class DateUtil {
 
     public static boolean verificaDataHora(String data) {
         return (data.matches("\\d{2}/\\d{2}/\\d{4} \\d{2}:\\d{2}"));
+    }
+
+    public static String dateToString(DateFormat dateFormat) {
+        return (new SimpleDateFormat("dd/MM/yyyy").format(dateFormat));
     }
 }

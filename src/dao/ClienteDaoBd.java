@@ -84,7 +84,7 @@ public class ClienteDaoBd implements ClienteDao {
             fecharConexao();
         }
     }
-    
+
     @Override
     public void editar(Cliente c, long novoX, String coluna) {
         String sql = "UPDATE cliente SET " + coluna + "=(?) WHERE id=(?)";
@@ -99,7 +99,7 @@ public class ClienteDaoBd implements ClienteDao {
             fecharConexao();
         }
     }
-    
+
     @Override
     public List<Cliente> listar() {
         List<Cliente> listaClientes = new ArrayList<>();
@@ -112,14 +112,15 @@ public class ClienteDaoBd implements ClienteDao {
             ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
-                int id = resultado.getInt("id");               
+                int id = resultado.getInt("id");
                 String nome = resultado.getString("nome");
                 long rg = resultado.getLong("rg");
                 String telefone = resultado.getString("telefone");
                 long matricula = resultado.getLong("matricula");
+                int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
 
-                Cliente cli = new Cliente(id, nome, rg, telefone, matricula);
+                Cliente cli = new Cliente(id, nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
 
                 listaClientes.add(cli);
 
@@ -149,8 +150,10 @@ public class ClienteDaoBd implements ClienteDao {
                 long rg = resultado.getLong("rg");
                 String telefone = resultado.getString("telefone");
                 long matricula = resultado.getLong("matricula");
+                int livrosAlugados = resultado.getInt("livrosAlugados");
+                int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
 
-                Cliente cli = new Cliente(id, nome, rg, telefone, matricula);
+                Cliente cli = new Cliente(id, nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
 
                 return cli;
 
@@ -181,8 +184,10 @@ public class ClienteDaoBd implements ClienteDao {
                 long rgX = resultado.getLong("rg");
                 String telefone = resultado.getString("telefone");
                 long matricula = resultado.getLong("matricula");
+                int livrosAlugados = resultado.getInt("livrosAlugados");
+                int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
 
-                Cliente cli = new Cliente(id, nome, rgX, telefone, matricula);
+                Cliente cli = new Cliente(id, nome, rgX, telefone, matricula, livrosAlugados, qntdelivrosalugados);
 
                 return cli;
 
@@ -213,8 +218,10 @@ public class ClienteDaoBd implements ClienteDao {
                 long rg = resultado.getLong("rg");
                 String telefone = resultado.getString("telefone");
                 long matricula = resultado.getLong("matricula");
+                int livrosAlugados = resultado.getInt("livrosAlugados");
+                int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
 
-                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula);
+                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
 
                 return cli;
 
@@ -228,7 +235,7 @@ public class ClienteDaoBd implements ClienteDao {
 
         return (null);
     }
-    
+
     @Override
     public Cliente procurarPorMatricula(long matricula) {
         String sql = "SELECT * FROM cliente WHERE matricula = ?";
@@ -245,8 +252,10 @@ public class ClienteDaoBd implements ClienteDao {
                 long rg = resultado.getLong("rg");
                 String telefone = resultado.getString("telefone");
                 long matriculaX = resultado.getLong("matricula");
+                int livrosAlugados = resultado.getInt("livrosAlugados");
+                int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
 
-                Cliente cli = new Cliente(id, nome, rg, telefone, matriculaX);
+                Cliente cli = new Cliente(id, nome, rg, telefone, matriculaX, livrosAlugados, qntdelivrosalugados);
 
                 return cli;
 
@@ -260,7 +269,7 @@ public class ClienteDaoBd implements ClienteDao {
 
         return (null);
     }
-    
+
     @Override
     public List<Cliente> listarPorNome(String nome) {
         List<Cliente> listaClientes = new ArrayList<>();
@@ -276,9 +285,11 @@ public class ClienteDaoBd implements ClienteDao {
                 String nomeX = resultado.getString("nome");
                 long rg = resultado.getLong("rg");
                 String telefone = resultado.getString("telefone");
-                long matricula = resultado.getLong("matricula");               
+                long matricula = resultado.getLong("matricula");
+                int livrosAlugados = resultado.getInt("livrosAlugados");
+                int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
 
-                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula);
+                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
 
                 listaClientes.add(cli);
 

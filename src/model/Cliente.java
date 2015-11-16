@@ -28,7 +28,7 @@ public class Cliente {
         this.qntdelivrosalugados = 0;
     }
 
-    public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, Long matriculaIn) {
+    public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn) {
         this.id = idIn;
         this.nome = nomeIn;
         this.rg = rgIn;
@@ -36,6 +36,16 @@ public class Cliente {
         this.matricula = matriculaIn;
         this.livrosAlugados = 0;
         this.qntdelivrosalugados = 0;
+    }
+    
+     public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn, int livrosAlugadosIn, int qntdelivrosalugadosIn) {
+        this.id = idIn;
+        this.nome = nomeIn;
+        this.rg = rgIn;
+        this.telefone = telefoneIn;
+        this.matricula = matriculaIn;
+        this.livrosAlugados = livrosAlugadosIn;
+        this.qntdelivrosalugados = qntdelivrosalugadosIn;
     }
      
     public void setNome(String nomeIn) {

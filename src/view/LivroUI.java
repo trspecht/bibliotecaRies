@@ -19,11 +19,10 @@ public class LivroUI {
     }
 
     public void executar() {
-        int opcao = 0;
-        do {
-            System.out.println(LivroMenu.getOpcoes());
-            opcao = Console.scanInt("Digite sua opção:");
-            switch (opcao) {
+        String op = "";
+        while (!op.equals("0")) {
+            op = Console.scanString(LivroMenu.getOpcoes() + "\nDigite sua opção:");
+            switch (op) {
                 case LivroMenu.OP_CADASTRAR:
                     cadastrarLivro();
                     break;
@@ -44,9 +43,8 @@ public class LivroUI {
                     break;
                 default:
                     System.out.println("Opção inválida..");
-
             }
-        } while (opcao != LivroMenu.OP_VOLTAR);
+        }
     }
 
     private void cadastrarLivro() {

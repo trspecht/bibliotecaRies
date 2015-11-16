@@ -2,10 +2,6 @@ package biblioteca;
 
 import view.MainUI;
 
-/**
- *
- * @author lhries
- */
 public class Biblioteca {
 
     /**

@@ -20,11 +20,11 @@ public class MainUI {
                 case MainMenu.OP_LIVRO:
                     new LivroUI().executar();
                     break;
-                case MainMenu.OP_CONSULTA:
-                   // new ConsultaUI().executar();
+                case MainMenu.OP_ALUGUEL:
+                    new AluguelUI().executar();
                     break;
-//                case MainMenu.OP_AGENDA:
-//                    new AgendaUI(listaPacientes,agenda).executar();
+                case MainMenu.OP_DEVOLUCAO:
+                    new DevolucaoUI().executar();
 //                    break;
 //                case MainMenu.OP_HISTORICO:
 //                    new HistoricoUI(listaConsultas).executar();

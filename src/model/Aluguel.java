@@ -14,7 +14,8 @@ import java.util.Date;
  */
 public class Aluguel {
 
-    private int cod = 0, id;
+    private long codigo, cod;
+    private int idAluguel, id;
     private Cliente c;
     private Livro livrosAlugados;
     private Date dataAluguel;
@@ -31,30 +32,50 @@ public class Aluguel {
      * @param dataAluguel - recebe a data em que foi efetuada a transação
      * @param cod
      */
-    public Aluguel(Cliente cIn, Livro livrosAlugadosIn, Date dataAluguelIn, int codIn) {
+    public Aluguel(Cliente cIn, Livro livrosAlugadosIn, Date dataAluguelIn, long codIn) {
         this.c = cIn;
         this.livrosAlugados = livrosAlugadosIn;
         this.dataAluguel = dataAluguelIn;
-        this.cod = codIn;
+        this.codigo = codIn;  
     }
 
-    public Aluguel(int idIn, Cliente cIn, Livro livrosAlugadosIn, Date dataAluguelIn, int codIn) {
-        this.id = idIn;
+    public Aluguel(int idIn, Cliente cIn, Livro livrosAlugadosIn, Date dataAluguelIn, long codIn) {
+        this.idAluguel = idIn;
         this.c = cIn;
         this.livrosAlugados = livrosAlugadosIn;
         this.dataAluguel = dataAluguelIn;
-        this.cod = codIn;
+        this.codigo = codIn;
     }
 
-    public int getCod() {
-        return cod;
+    public Aluguel(int idAluguel, long codigo, Date dataUtil, int id, long cod) {
+        this.idAluguel = idAluguel;
+        this.codigo = codigo;
+        this.dataAluguel = dataUtil;
+        this.id = id;
+        this.cod = cod;
+    }
+    
+    public void setId(int id) {
+        this.idAluguel = id;
     }
 
-    public void setCliente(Cliente c) {
+    public int getId() {
+        return idAluguel;
+    }
+
+    public void setCodigo(int cod) {
+        this.codigo = cod;
+    }
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public void setC(Cliente c) {
         this.c = c;
     }
 
-    public Cliente getCliente() {
+    public Cliente getC() {
         return c;
     }
 
@@ -76,7 +97,7 @@ public class Aluguel {
 
     @Override
     public String toString() {
-        return "\nCódigo para devolução: " + cod + "\nCliente: " + c + "\nLivro Alugado: " + livrosAlugados + "\nDataAluguel= " + dataAluguel;
+        return "\nCódigo para devolução: " + codigo + "\nCliente: " + c + "\nLivro Alugado: " + livrosAlugados + "\nDataAluguel= " + dataAluguel;
     }
 
 }

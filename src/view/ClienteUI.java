@@ -14,11 +14,10 @@ public class ClienteUI {
     }
 
     public void executar() {
-        int opcao = 0;
-        do {
-            System.out.println(ClienteMenu.getOpcoes());
-            opcao = Console.scanInt("Digite sua opção:");
-            switch (opcao) {
+        String op = "";
+        while (!op.equals("0")) {
+            op = Console.scanString(ClienteMenu.getOpcoes() + "\nDigite sua opção:");
+            switch (op) {
                 case ClienteMenu.OP_CADASTRAR:
                     cadastrarCliente();
                     break;
@@ -39,9 +38,8 @@ public class ClienteUI {
                     break;
                 default:
                     System.out.println("Opção inválida..");
-
             }
-        } while (opcao != ClienteMenu.OP_VOLTAR);
+        }
     }
 
     private void cadastrarCliente() {
@@ -73,13 +71,15 @@ public class ClienteUI {
                 + String.format("%-20s", "|Nome") + "\t"
                 + String.format("%-20s", "|Telefone")
                 + String.format("%-20s", "|Matrícula")
+                + String.format("%-20s", "|Livros em posse")
                 + String.format("%-20s", "|Quantidade de livros alugados"));
         for (Cliente cliente : servicoC.listarClientes()) {
             System.out.println(String.format("%-10s", cliente.getRg()) + "\t"
                     + String.format("%-20s", "|" + cliente.getNome()) + "\t"
                     + String.format("%-20s", "|" + cliente.getTelefone() + "\t"
                             + String.format("%-20s", "    |" + cliente.getMatricula() + "\t"
-                                    + String.format("%-20s", "|" + cliente.getQntdelivrosalugados()))));
+                                    + String.format("%-20s", "    |" + cliente.getLivrosAlugados() + "\t"
+                                            + String.format("%-20s", "|" + cliente.getQntdelivrosalugados())))));
         }
     }
 
@@ -178,7 +178,7 @@ public class ClienteUI {
                 Cliente cli = servicoC.buscarClientePorNome(novoNome);
                 System.out.println(cli);
                 break;
-            }    
+            }
             case "3": {
                 return;
             }
@@ -188,5 +188,5 @@ public class ClienteUI {
             }
         }
     }
-    
+
 }

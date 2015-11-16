@@ -29,7 +29,7 @@ public class ClienteServico {
             return false;
         }
     }
-    
+
     public boolean nomeExiste(String nome) {
         ClienteDao dao = new ClienteDaoBd();
         Cliente cliente = dao.procurarPorNome(nome);
@@ -39,7 +39,7 @@ public class ClienteServico {
             return false;
         }
     }
-    
+
     public boolean matriculaExiste(int id) {
         ClienteDao dao = new ClienteDaoBd();
         Cliente cliente = dao.procurarPorId(id);
@@ -74,13 +74,13 @@ public class ClienteServico {
         Cliente cliente = dao.procurarPorRg(rg);
         return (cliente);
     }
-    
+
     public Cliente buscarClientePorNome(String nome) {
         ClienteDao dao = new ClienteDaoBd();
         Cliente cliente = dao.procurarPorNome(nome);
         return (cliente);
     }
-    
+
     public void editarCliente(String op, String novoValor, Cliente c) {
         ClienteDao dao = new ClienteDaoBd();
         if (op.equals("1")) {
@@ -90,14 +90,14 @@ public class ClienteServico {
             dao.editar(c, novoValor, "telefone");
         }
     }
-    
+
     public void editarCliente(String op, long novoValor, Cliente c) {
         ClienteDao dao = new ClienteDaoBd();
         if (op.equals("3")) {
             dao.editar(c, novoValor, "rg");
         }
     }
-    
+
     public void deletarCliente(Cliente c) {
         ClienteDao dao = new ClienteDaoBd();
         dao.deletar(c);
@@ -119,7 +119,7 @@ public class ClienteServico {
         }
         return espacos == true;
     }
-
+            
     public boolean isTelefone(String novoTelefone) {
         return novoTelefone.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}")
                 || novoTelefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
