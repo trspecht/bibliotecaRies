@@ -1,9 +1,10 @@
 package model;
 
 /**
+ * Classe MODELS para a classe Cliente
  *
  * @author Tainara Specht
- * @author Diego Peixoto Classe Models para a classe Cliente
+ * @author Diego Peixoto
  */
 public class Cliente {
 
@@ -14,10 +15,10 @@ public class Cliente {
     /**
      * Construtor da classe
      *
-     * @param nomeIn - recebe o nome do cliente
-     * @param rgIn
-     * @param telefoneIn - recebe o telefone do cliente
-     * @param matriculaIn - recebe o número de matrícula do cliente
+     * @param nomeIn - recebe o nome do cliente;
+     * @param rgIn - recebe o RG do cliente;
+     * @param telefoneIn - recebe o telefone do cliente;
+     * @param matriculaIn - recebe o número de matrícula do cliente;
      */
     public Cliente(String nomeIn, long rgIn, String telefoneIn, Long matriculaIn) {
         this.nome = nomeIn;
@@ -29,17 +30,38 @@ public class Cliente {
         this.qntdeatraso = 0;
     }
 
-    public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn) {
-        this.id = idIn;
-        this.nome = nomeIn;
-        this.rg = rgIn;
-        this.telefone = telefoneIn;
-        this.matricula = matriculaIn;
-        this.livrosAlugados = 0;
-        this.qntdelivrosalugados = 0;
-        this.qntdeatraso = 0;
-    }
-    
+//    /**
+//     * Construtor de acesso às informações do banco
+//     *
+//     * @param idIn - recebe o ID do cliente;
+//     * @param nomeIn - recebe o nome do cliente;
+//     * @param rgIn - recebe o RG do cliente;
+//     * @param telefoneIn - recebe o telefone do cliente;
+//     * @param matriculaIn - recebe a matrícula do cliente;
+//     */
+//    public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn) {
+//        this.id = idIn;
+//        this.nome = nomeIn;
+//        this.rg = rgIn;
+//        this.telefone = telefoneIn;
+//        this.matricula = matriculaIn;
+//        this.livrosAlugados = 0;
+//        this.qntdelivrosalugados = 0;
+//        this.qntdeatraso = 0;
+//    }
+
+    /**
+     *Construtor de acesso às informações do banco
+     *
+     * @param idIn - recebe o ID do cliente;
+     * @param nomeIn - recebe o nome do cliente;
+     * @param rgIn - recebe o RG do cliente;
+     * @param telefoneIn - recebe o telefone do cliente;
+     * @param matriculaIn - recebe a matrícula do cliente;
+     * @param livrosAlugadosIn - recebe os livros alugados;
+     * @param qntdelivrosalugadosIn - recebe a quantidade de livros alugados;
+     * @param qntdeatrasoIn - recebe a quantidade de dias dos livros em atraso;
+     */
      public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn, int livrosAlugadosIn, int qntdelivrosalugadosIn, int qntdeatrasoIn) {
         this.id = idIn;
         this.nome = nomeIn;

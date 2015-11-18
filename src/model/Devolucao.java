@@ -8,6 +8,7 @@ package model;
 import java.util.Date;
 
 /**
+ * Classe MODEL para a classe Devolução
  *
  * @author Tainara Specht
  * @author Diego Peixoto Classe Models para classe Devolucao
@@ -21,6 +22,8 @@ public class Devolucao {
     /**
      * Construtor da classe
      *
+     * @param aluguelIn - recebe o aluguel de um livro;
+     * @param dataDevolucao - recebe a data de devolução de um livro;
      */
     public Devolucao(Aluguel aluguelIn, Date dataDevolucao) {
         this.aluguel = aluguelIn;
@@ -28,6 +31,12 @@ public class Devolucao {
         this.dataDevolucao = data;
     }
 
+    /**
+     * Construtor de acesso às informações do banco
+     * @param idDevolucaoIn - recebe o ID da devolução de um livro;
+     * @param aluguelIn - recebe o aluguel de um livro;
+     * @param dataDevolucao - recebe a data de devolução de um livro;
+     */
     public Devolucao(int idDevolucaoIn, Aluguel aluguelIn, Date dataDevolucao) {
         this.idDevolucao = idDevolucaoIn;
         this.aluguel = aluguelIn;

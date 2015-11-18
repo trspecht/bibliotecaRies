@@ -12,6 +12,13 @@ import util.Console;
 import util.DateUtil;
 import view.menu.AluguelMenu;
 
+/**
+ * Classe VIEW da classe Aluguel
+ *
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
+ */
 public class AluguelUI {
 
     private final AluguelServico servicoA = new AluguelServico();
@@ -21,6 +28,9 @@ public class AluguelUI {
     public AluguelUI() {
     }
 
+    /**
+     * Método que executa o menu do Aluguel;
+     */
     public void executar() {
         String op = "";
         while (!op.equals("0")) {
@@ -41,6 +51,9 @@ public class AluguelUI {
         }
     }
 
+    /**
+     * Método que realiza o aluguel dos livros;
+     */
     private void alugarLivro() {
         try {
             long rg = Console.scanLong("Digite seu RG para continuar: ");

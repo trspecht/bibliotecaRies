@@ -8,9 +8,11 @@ package model;
 import java.util.Date;
 
 /**
+ * * Classe MODEL para a classe Aluguel
  *
  * @author Tainara Specht
- * @author Diego Peixoto Classe Models para classe Aluguel
+ * @author Diego Peixoto
+ *
  */
 public class Aluguel {
 
@@ -22,17 +24,25 @@ public class Aluguel {
     /**
      * Construtor da classe
      *
-     * @param cIn
-     * @param livrosAlugadosIn
-     * @param dataAluguelIn
+     * @param cIn recebe o objeto cliente;
+     * @param livrosAlugadosIn recebe o objeto livros alugados;
+     * @param dataAluguelIn recebe o objeto data do aluguel do livro;
      */
     public Aluguel(Date dataAluguelIn, Cliente cIn, Livro livrosAlugadosIn) {
         this.dataAluguel = dataAluguelIn;
         this.c = cIn;
         this.livrosAlugados = livrosAlugadosIn;
-
     }
 
+    /**
+     *
+     * Construtor de acesso às informações do banco
+     *
+     * @param idAluguelIn recebe o objeto ID do aluguel;
+     * @param dataAluguelIn recebe o objeto data do aluguel do livro;
+     * @param cIn recebe o objeto cliente;
+     * @param livrosAlugadosIn recebe o objeto livros alugados;
+     */
     public Aluguel(int idAluguelIn, Date dataAluguelIn, Cliente cIn, Livro livrosAlugadosIn) {
         this.idAluguel = idAluguelIn;
         this.dataAluguel = dataAluguelIn;
