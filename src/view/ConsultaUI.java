@@ -12,9 +12,13 @@ import util.Console;
 import view.menu.ConsultaMenu;
 
 /**
+ * Classe VIEW da classe Consulta
  *
- * @author Diego
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
  */
+
 public class ConsultaUI {
 
     private final AluguelServico servicoA = new AluguelServico();
@@ -25,6 +29,9 @@ public class ConsultaUI {
     public ConsultaUI() {
     }
 
+    /**
+     * Método que executa o menu Consulta;
+     */
     public void executar() {
         String op = "";
         while (!op.equals("0")) {

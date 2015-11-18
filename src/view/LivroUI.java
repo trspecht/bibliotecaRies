@@ -10,7 +10,13 @@ import model.Livro;
 import servico.LivroServico;
 import util.Console;
 import view.menu.LivroMenu;
-
+/**
+ * Classe VIEW da classe Livro
+ *
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
+ */
 public class LivroUI {
 
     private final LivroServico servicoL = new LivroServico();
@@ -18,6 +24,9 @@ public class LivroUI {
     public LivroUI() {
     }
 
+    /**
+     * Método para executar o menu Livro;
+     */
     public void executar() {
         String op = "";
         while (!op.equals("0")) {
@@ -47,6 +56,9 @@ public class LivroUI {
         }
     }
 
+    /**
+     * Método intermediário para cadastrar novos livros;
+     */
     private void cadastrarLivro() {
         try {
             long isbn = Console.scanLong("Isbn: ");
@@ -81,6 +93,9 @@ public class LivroUI {
         }
     }
 
+    /**
+     * Método para mostrar todos os livros cadastrados;
+     */
     public void mostrarLivro() {
         System.out.println("-----------------------------\n");
         System.out.println(String.format("%-10s", "Isbn: ") + "\t"
@@ -100,6 +115,9 @@ public class LivroUI {
 
     }
 
+    /**
+     * Método intermediário para editar livros já cadastrados;
+     */
     private void editarLivro() {
         try {
             long isbn = Console.scanLong("Isbn do livro a ser editado: ");
@@ -175,6 +193,9 @@ public class LivroUI {
         }
     }
 
+    /**
+     * Método intermediário para deletar livros cadastrados;
+     */
     private void deletarLivro() {
         try {
             long isbn = Console.scanLong("Isbn do livro a ser deletado: ");
@@ -212,6 +233,9 @@ public class LivroUI {
         }
     }
 
+    /**
+     * Método intermediário para procurar livros cadastrados;
+     */
     private void procurarLivro() {
         String op = Console.scanString("Como deseja efetuar a busca do livro? \n1- Procurar por Isbn \n2- Procurar por Titulo \n3- Voltar \n");
         try {

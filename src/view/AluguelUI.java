@@ -52,7 +52,7 @@ public class AluguelUI {
     }
 
     /**
-     * Método que realiza o aluguel dos livros;
+     * Método intermediário para realizar o aluguel dos livros;
      */
     private void alugarLivro() {
         try {
@@ -137,6 +137,9 @@ public class AluguelUI {
         }
     }
 
+    /**
+     * Método que mostra os dados de todos os alugueis realizados;
+     */
     public void mostrarAluguel() {
         System.out.println("-----------------------------\n");
         System.out.println(String.format("%-20s", "|Código do Aluguel") + "\t"

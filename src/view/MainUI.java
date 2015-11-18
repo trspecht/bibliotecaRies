@@ -2,12 +2,21 @@ package view;
 
 import util.Console;
 import view.menu.MainMenu;
-
+/**
+ * Classe VIEW da classe Main
+ *
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
+ */
 public class MainUI {
 
     public MainUI() {
     }
 
+    /**
+     * Método para executar o menu principal;
+     */
     public void executar() {
         String op = "";
         while (!op.equals("0")) {

@@ -10,6 +10,13 @@ import servico.DevolucaoServico;
 import util.Console;
 import util.DateUtil;
 import view.menu.DevolucaoMenu;
+/**
+ * Classe VIEW da classe Devolução
+ *
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
+ */
 
 public class DevolucaoUI {
 
@@ -19,6 +26,9 @@ public class DevolucaoUI {
     public DevolucaoUI() {
     }
 
+    /**
+     * Método que executa o menu Devolução;
+     */
     public void executar() {
         String op = "";
         while (!op.equals("0")) {
@@ -39,6 +49,9 @@ public class DevolucaoUI {
         }
     }
 
+    /**
+     * Método intermediário para devolver um livro;
+     */
     private void devolverLivro() {
         boolean atrasado = false;
         try {
@@ -63,6 +76,9 @@ public class DevolucaoUI {
         }
     }
 
+    /**
+     * Método para mostrar os dados de todas as devoluções;
+     */
     public void mostrarDevolucao() {
         System.out.println("-----------------------------\n");
         System.out.println(String.format("%-20s", "|Código da devolução") + "\t"

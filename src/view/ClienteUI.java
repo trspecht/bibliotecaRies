@@ -5,7 +5,13 @@ import model.Cliente;
 import servico.ClienteServico;
 import util.Console;
 import view.menu.ClienteMenu;
-
+/**
+ * Classe VIEW da classe Cliente
+ *
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
+ */
 public class ClienteUI {
 
     private final ClienteServico servicoC = new ClienteServico();
@@ -13,6 +19,9 @@ public class ClienteUI {
     public ClienteUI() {
     }
 
+    /**
+     * Método que executa o menu do Cliente;
+     */
     public void executar() {
         String op = "";
         while (!op.equals("0")) {
@@ -42,6 +51,9 @@ public class ClienteUI {
         }
     }
 
+    /**
+     * Método intermediário para cadastrar um novo cliente;
+     */
     private void cadastrarCliente() {
         try {
             long rg = Console.scanLong("RG: ");
@@ -72,6 +84,9 @@ public class ClienteUI {
         }
     }
 
+    /**
+     * Método para mostrar os dados de todos os clientes cadastrados;
+     */
     public void mostrarCliente() {
         System.out.println("-----------------------------\n");
         System.out.println(String.format("%-10s", "RG") + "\t"
@@ -92,6 +107,9 @@ public class ClienteUI {
         }
     }
 
+    /**
+     * Método intermediário para editar os dados de um cliente;
+     */
     private void editarCliente() {
         try {
             long rg = Console.scanLong("RG do cliente a ser editado: ");
@@ -146,6 +164,9 @@ public class ClienteUI {
         }
     }
 
+    /**
+     * Método intermediário para deletar um cliente;
+     */
     private void deletarCliente() {
         try {
             long rg = Console.scanLong("RG do paciente a ser deletado: ");
@@ -182,6 +203,9 @@ public class ClienteUI {
         }
     }
 
+    /**
+     * Método intermediário para procurar um cliente já existente;
+     */
     private void procurarCliente() {
         String op = Console.scanString("Como deseja efetuar a busca do cliente? \n1- Procurar por RG \n2- Procurar por Nome \n3- Voltar \n");
         try {

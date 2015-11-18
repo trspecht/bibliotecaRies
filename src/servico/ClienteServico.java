@@ -74,11 +74,6 @@ public class ClienteServico {
         return matriculaNumero;
     }
 
-//    public long gerarMatricula() {
-//        long matricula = randomMatricula();
-//        return matricula;
-//    }
-
     /**
      * Método que comunica a classe ClienteDao da inserção de um novo cliente;
      * @param c - recebe um objeto cliente;
@@ -121,7 +116,7 @@ public class ClienteServico {
      * Método que solicita ao ClienteDao que edite as informações de variável tipo String de um cliente;
      * @param op - recebe o número do operador que indica as opções do menu;
      * @param novoValor - recebe o novo valor a ser editado;
-     * @param c - recebe o objeto cliente que terá algum valor alterado;
+     * @param c - recebe o objeto Cliente que terá algum valor alterado;
      */
     public void editarCliente(String op, String novoValor, Cliente c) {
         ClienteDao dao = new ClienteDaoBd();
@@ -148,7 +143,7 @@ public class ClienteServico {
 
     /**
      * Método que solicita ao ClienteDao que delete um cliente do banco de dados;
-     * @param c - recebe o cliente;
+     * @param c - recebe o objeto Cliente;
      */
     public void deletarCliente(Cliente c) {
         ClienteDao dao = new ClienteDaoBd();
@@ -177,13 +172,11 @@ public class ClienteServico {
         return espacos == true;
     }
 
-<<<<<<< HEAD
     /**
-     * Método booleano para verificar se a String digitada é um número de telefone válido;
-     * @param novoTelefone - recebe o número de telefone;
-     * @return retorna se o número de telefone é válido;
+     * Método para não deixar que um número de RG negativo seja inserido;
+     * @param rgDigitado - recebe o número de um RG;
+     * @return retorna 'true' ou 'false';
      */
-=======
     public boolean validacaoRG(long rgDigitado) {
         if (rgDigitado >= 0) {
             return true;
@@ -192,7 +185,11 @@ public class ClienteServico {
         }
     }
 
->>>>>>> d18cb5ffccb6fb1d23c5c680620f6b651abdb668
+    /**
+     * Método booleano para verificar se a String digitada é um número de telefone válido;
+     * @param novoTelefone - recebe o número de telefone;
+     * @return retorna se o número de telefone é válido;
+     */
     public boolean isTelefone(String novoTelefone) {
         return novoTelefone.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}")
                 || novoTelefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");

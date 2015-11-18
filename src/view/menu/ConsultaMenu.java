@@ -1,5 +1,13 @@
 package view.menu;
 
+/**
+ * Classe que gera o MENU Consulta;
+ *
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ *
+ */
+
 public class ConsultaMenu {
     public static final String OP_LISTARLIVROS = "1";
     public static final String OP_LISTARLIVROSDISPONIVEIS = "2";
@@ -7,6 +15,11 @@ public class ConsultaMenu {
     public static final String OP_LISTARCLIENTESQUEMAISRETIRAMLIVROS = "4";
     public static final String OP_LISTARCLIENTESQUEMAISATRASARAM = "5";
     public static final String OP_VOLTAR = "0";
+
+    /**
+     * Método que mostra o menu de Consultas;
+     * @return retorna as opções do menu;
+     */
 
     public static String getOpcoes() {
         return ("\n--------------------------------------\n"
