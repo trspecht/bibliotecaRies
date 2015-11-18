@@ -55,5 +55,5 @@ public class AluguelServico {
         Aluguel aluguel = dao.procurarPorId(id);
         return aluguel;
     }
-
+    
 }

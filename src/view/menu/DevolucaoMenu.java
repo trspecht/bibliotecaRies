@@ -18,7 +18,6 @@ public class DevolucaoMenu {
      * @return retorna as opções do menu;
      */
 
-
     public static String getOpcoes() {
         return ("\n--------------------------------------\n"
                 + "1- Devolver Livro\n"

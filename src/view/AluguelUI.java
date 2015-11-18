@@ -57,7 +57,6 @@ public class AluguelUI {
     private void alugarLivro() {
         try {
             long rg = Console.scanLong("Digite seu RG para continuar: ");
-            servicoC.clienteExiste(rg);
             if (servicoC.clienteExiste(rg) == false) {
                 System.out.println("Não existe cadastro em no nosso sistema, faça seu cadastro para poder alugar um livro!");
                 return;
