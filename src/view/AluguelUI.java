@@ -9,6 +9,7 @@ import servico.AluguelServico;
 import servico.ClienteServico;
 import servico.LivroServico;
 import util.Console;
+import util.DateUtil;
 import view.menu.AluguelMenu;
 
 public class AluguelUI {
@@ -31,6 +32,9 @@ public class AluguelUI {
                 case AluguelMenu.OP_ALUGARLIVRO:
                     alugarLivro();
                     break;
+                case AluguelMenu.OP_LISTARALUGUEL:
+                    mostrarAluguel();
+                    break;    
                 case AluguelMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu principal..");
                     return;
@@ -120,6 +124,20 @@ public class AluguelUI {
             }
         } catch (InputMismatchException e) {
             System.out.println("Entrada inválida");
+        }
+    }
+
+    public void mostrarAluguel() {
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-20s", "|Código do Aluguel") + "\t"
+                + String.format("%-20s", "|Nome do cliente")
+                + String.format("%-20s", "  |Titulo do livro alugado")
+                + String.format("%-20s", "    |Data do aluguel:"));
+        for (Aluguel aluguel : servicoA.listarAluguel()) {
+            System.out.println(String.format("%-10s", aluguel.getId()) + "\t"
+                    + String.format("%-20s", "        |" + aluguel.getC().getNome()) + "\t"
+                    + String.format("%-20s", "      |" + aluguel.getLivrosAlugados().getTitulo() + "\t"
+                            + String.format("%-20s", "                  |" + DateUtil.dateToString(aluguel.getDataAluguel()))));
         }
     }
 

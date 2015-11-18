@@ -10,6 +10,7 @@ import model.Devolucao;
 import servico.AluguelServico;
 import servico.DevolucaoServico;
 import util.Console;
+import util.DateUtil;
 import view.menu.DevolucaoMenu;
 
 public class DevolucaoUI {
@@ -29,6 +30,9 @@ public class DevolucaoUI {
             switch (op) {
                 case DevolucaoMenu.OP_DEVOLVERLIVRO:
                     devolverLivro();
+                    break;
+                case DevolucaoMenu.OP_LISTARDEVOLUCAO:
+                    mostrarDevolucao();
                     break;
                 case DevolucaoMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu principal..");
@@ -56,10 +60,24 @@ public class DevolucaoUI {
                 System.out.println("Você está com o livro atrasado, favor acertar a multa de atraso no valor de " + multa + " com a administração!");
                 atrasado = true;
             }
-            servicoD.addDevolucao(new Devolucao(alu, data),atrasado);
+            servicoD.addDevolucao(new Devolucao(alu, data), atrasado);
             System.out.println("Livro devolvido com sucesso!");
         } catch (InputMismatchException e) {
             System.out.println("Entrada inválida!");
+        }
+    }
+
+    public void mostrarDevolucao() {
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-20s", "|Código da devolução") + "\t"
+                + String.format("%-20s", "|Nome do cliente")
+                + String.format("%-20s", "  |Titulo do livro alugado")
+                + String.format("%-20s", "    |Data da devolução"));
+        for (Devolucao devolucao : servicoD.listarDevolucao()) {
+            System.out.println(String.format("%-10s", devolucao.getIdDevolucao()) + "\t"
+                    + String.format("%-20s", "        |" + devolucao.getAluguel().getC().getNome()) + "\t"
+                    + String.format("%-20s", "      |" + devolucao.getAluguel().getLivrosAlugados().getTitulo() + "\t"
+                            + String.format("%-20s", "                  |" + DateUtil.dateToString(devolucao.getDataDevolucao()))));
         }
     }
 

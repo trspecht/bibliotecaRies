@@ -68,7 +68,7 @@ public class Devolucao {
     @Override
     public String toString() {
         return "Dados da devolução: " + "\nCódigo da devolução: " + idDevolucao + "\nData da devolução: " + dataDevolucao
-                + "\nCódigo do aluguel: " + aluguel.getId() + "\nNome do cliente: " + aluguel.getC().getNome()
+                + "\nNome do cliente: " + aluguel.getC().getNome()
                 + "\nTitulo do livro: "+aluguel.getLivrosAlugados().getTitulo();
     }
 

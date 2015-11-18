@@ -117,7 +117,7 @@ public class DevolucaoDaoBd implements DevolucaoDao {
                 int idDevolucao = resultado.getInt("idDevolucao");
                 int idAluguel = resultado.getInt("idAluguel");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
-                java.sql.Date dataSql = resultado.getDate("dataAluguel");
+                java.sql.Date dataSql = resultado.getDate("dataDevolucao");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
                 AluguelDao aluguelDao = new AluguelDaoBd();
                 Aluguel aluguel = aluguelDao.procurarPorId(idAluguel);
@@ -146,7 +146,7 @@ public class DevolucaoDaoBd implements DevolucaoDao {
                 int idDevolucao = resultado.getInt("idDevolucao");
                 int idAluguel = resultado.getInt("idAluguel");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
-                java.sql.Date dataSql = resultado.getDate("dataAluguel");
+                java.sql.Date dataSql = resultado.getDate("dataDevolucao");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
                 AluguelDao aluguelDao = new AluguelDaoBd();
                 Aluguel aluguel = aluguelDao.procurarPorId(idAluguel);
