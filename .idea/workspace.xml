@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0a6845c-b67c-447d-a46b-067d4a107f68" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Aluguel.java" afterPath="$PROJECT_DIR$/src/model/Aluguel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servico/AluguelServico.java" afterPath="$PROJECT_DIR$/src/servico/AluguelServico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/AluguelUI.java" afterPath="$PROJECT_DIR$/src/view/AluguelUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Cliente.java" afterPath="$PROJECT_DIR$/src/model/Cliente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/menu/ClienteMenu.java" afterPath="$PROJECT_DIR$/src/view/menu/ClienteMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/ClienteServico$ClienteCompAluguel.class" afterPath="$PROJECT_DIR$/build/classes/servico/ClienteServico$ClienteCompAluguel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/ClienteServico$ClienteCompAtraso.class" afterPath="$PROJECT_DIR$/build/classes/servico/ClienteServico$ClienteCompAtraso.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/ClienteServico.class" afterPath="$PROJECT_DIR$/build/classes/servico/ClienteServico.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/view/ClienteUI.class" afterPath="$PROJECT_DIR$/build/classes/view/ClienteUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doc_Testes.docx" afterPath="$PROJECT_DIR$/Doc_Testes.docx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/LivroServico$livroCompRetirados.class" afterPath="$PROJECT_DIR$/build/classes/servico/LivroServico$livroCompRetirados.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/servico/LivroServico.class" afterPath="$PROJECT_DIR$/build/classes/servico/LivroServico.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/view/LivroUI.class" afterPath="$PROJECT_DIR$/build/classes/view/LivroUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servico/ClienteServico.java" afterPath="$PROJECT_DIR$/src/servico/ClienteServico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Devolucao.java" afterPath="$PROJECT_DIR$/src/model/Devolucao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Livro.java" afterPath="$PROJECT_DIR$/src/model/Livro.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/ClienteUI.java" afterPath="$PROJECT_DIR$/src/view/ClienteUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servico/LivroServico.java" afterPath="$PROJECT_DIR$/src/servico/LivroServico.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/LivroUI.java" afterPath="$PROJECT_DIR$/src/view/LivroUI.java" />
     </list>
     <ignored path="bibliotecaRies.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ClienteServico.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ClienteServico.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/servico/ClienteServico.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="251" column="92" selection-start-line="251" selection-start-column="92" selection-end-line="251" selection-end-column="92" />
+            <state vertical-scroll-proportion="3.1987076">
+              <caret line="261" column="7" selection-start-line="261" selection-start-column="7" selection-end-line="261" selection-end-column="7" />
               <folding>
                 <element signature="e#2491#2492#0" expanded="true" />
                 <element signature="e#2536#2537#0" expanded="true" />
@@ -87,10 +90,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AluguelUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AluguelUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/AluguelUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0662359">
+            <state vertical-scroll-proportion="0.0">
               <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
               <folding />
             </state>
@@ -799,19 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servico/ClienteServico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="251" column="92" selection-start-line="251" selection-start-column="92" selection-end-line="251" selection-end-column="92" />
-          <folding>
-            <element signature="e#2491#2492#0" expanded="true" />
-            <element signature="e#2536#2537#0" expanded="true" />
-            <element signature="e#2749#2750#0" expanded="true" />
-            <element signature="e#2801#2802#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -846,9 +836,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/AluguelUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0662359">
+        <state vertical-scroll-proportion="0.0">
           <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servico/ClienteServico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.1987076">
+          <caret line="261" column="7" selection-start-line="261" selection-start-column="7" selection-end-line="261" selection-end-column="7" />
+          <folding>
+            <element signature="e#2491#2492#0" expanded="true" />
+            <element signature="e#2536#2537#0" expanded="true" />
+            <element signature="e#2749#2750#0" expanded="true" />
+            <element signature="e#2801#2802#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

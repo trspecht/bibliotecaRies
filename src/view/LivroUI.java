@@ -50,7 +50,9 @@ public class LivroUI {
     private void cadastrarLivro() {
         try {
             long isbn = Console.scanLong("Isbn: ");
-            servicoL.LivroExiste(isbn);
+            while (servicoL.validacaoIsbn(isbn) == false) {
+                isbn = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+            }
             if (servicoL.LivroExiste(isbn) == true) {
                 System.out.println("Isbn já existe no cadastro");
                 return;
@@ -101,6 +103,9 @@ public class LivroUI {
     private void editarLivro() {
         try {
             long isbn = Console.scanLong("Isbn do livro a ser editado: ");
+            while (servicoL.validacaoIsbn(isbn) == false) {
+                isbn = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+            }
             if (servicoL.LivroExiste(isbn) == false) {
                 System.out.println("Livro não existe no cadastro");
                 return;
@@ -111,6 +116,9 @@ public class LivroUI {
             switch (op) {
                 case "1": {
                     long novoIsbn = Console.scanLong("Digite o novo Isbn: ");
+                    while (servicoL.validacaoIsbn(novoIsbn) == false) {
+                        novoIsbn = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+                    }
                     while (servicoL.LivroExiste(novoIsbn) == true) {
                         novoIsbn = Console.scanLong("Isbn já existe em nosso sistema, favor verifique e digite novamente: ");
                     }
@@ -170,6 +178,9 @@ public class LivroUI {
     private void deletarLivro() {
         try {
             long isbn = Console.scanLong("Isbn do livro a ser deletado: ");
+            while (servicoL.validacaoIsbn(isbn) == false) {
+                isbn = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+            }
             if (!servicoL.LivroExiste(isbn)) {
                 System.out.println("Livro não existe no cadastro");
             } else {
@@ -207,6 +218,9 @@ public class LivroUI {
             switch (op) {
                 case "1": {
                     long novoIsbn = Console.scanLong("Digite o Isbn do livro: ");
+                    while (servicoL.validacaoIsbn(novoIsbn) == false) {
+                        novoIsbn = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+                    }
                     if (servicoL.LivroExiste(novoIsbn) == false) {
                         System.out.println("Livro não cadastrado!");
                         return;

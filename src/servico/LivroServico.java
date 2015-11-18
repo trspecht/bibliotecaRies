@@ -83,6 +83,14 @@ public class LivroServico {
         }
     }
 
+    public boolean validacaoIsbn(long isbnDigitado) {
+        if (isbnDigitado >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public void VisualizarLivroDisponivel() {
         List<Livro> listaLivroTemp = new LivroDaoBd().listar();
         System.out.println("-----------------------------\n");
