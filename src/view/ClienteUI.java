@@ -45,6 +45,9 @@ public class ClienteUI {
     private void cadastrarCliente() {
         try {
             long rg = Console.scanLong("RG: ");
+            while (servicoC.validacaoRG(rg) == false) {
+                rg = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+            }
             servicoC.clienteExiste(rg);
             if (servicoC.clienteExiste(rg) == true) {
                 System.out.println("RG já existente no nosso sistema");
@@ -92,6 +95,9 @@ public class ClienteUI {
     private void editarCliente() {
         try {
             long rg = Console.scanLong("RG do cliente a ser editado: ");
+            while (servicoC.validacaoRG(rg) == false) {
+                rg = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+            }
             if (servicoC.clienteExiste(rg) == false) {
                 System.out.println("RG não existente no cadastro");
                 return;
@@ -120,6 +126,9 @@ public class ClienteUI {
                 }
                 case "3": {
                     long novoRg = Console.scanLong("Digite o novo RG: ");
+                    while (servicoC.validacaoRG(novoRg) == false) {
+                        novoRg = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+                    }
                     while (servicoC.clienteExiste(novoRg) == true) {
                         novoRg = Console.scanLong("RG já existe no sistema, digite novamente: ");
                     }
@@ -140,6 +149,9 @@ public class ClienteUI {
     private void deletarCliente() {
         try {
             long rg = Console.scanLong("RG do paciente a ser deletado: ");
+            while (servicoC.validacaoRG(rg) == false) {
+                rg = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+            }
             if (!servicoC.clienteExiste(rg)) {
                 System.out.println("RG não existente no cadastro");
                 return;
@@ -176,6 +188,9 @@ public class ClienteUI {
             switch (op) {
                 case "1": {
                     long novoRg = Console.scanLong("Digite o RG: ");
+                    while (servicoC.validacaoRG(novoRg) == false) {
+                        novoRg = Console.scanLong("Número não pode ser negativo, digite novamente: ");
+                    }
                     if (servicoC.clienteExiste(novoRg) == false) {
                         System.out.println("Cliente não cadastrado!");
                         return;

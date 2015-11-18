@@ -110,6 +110,14 @@ public class ClienteServico {
         return espacos == true;
     }
 
+    public boolean validacaoRG(long rgDigitado) {
+        if (rgDigitado >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean isTelefone(String novoTelefone) {
         return novoTelefone.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}")
                 || novoTelefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
@@ -118,7 +126,7 @@ public class ClienteServico {
     public void clientesQueMaisAlugam() {
         List<Cliente> listaClienteTemp = new ClienteDaoBd().listar();
         Collections.sort(listaClienteTemp, new ClienteCompAluguel());
-       System.out.println("-----------------------------\n");
+        System.out.println("-----------------------------\n");
         System.out.println(String.format("%-10s", "RG") + "\t"
                 + String.format("%-20s", "|Nome") + "\t"
                 + String.format("%-20s", "|Telefone")
@@ -127,7 +135,7 @@ public class ClienteServico {
                 + String.format("%-20s", "|Quantidade de livros alugados")
                 + String.format("%-20s", "    |Quantidade de atrasos"));
         for (Cliente listaClientes : listaClienteTemp) {
-                System.out.println(String.format("%-10s", listaClientes.getRg()) + "\t"
+            System.out.println(String.format("%-10s", listaClientes.getRg()) + "\t"
                     + String.format("%-20s", "|" + listaClientes.getNome()) + "\t"
                     + String.format("%-20s", "|" + listaClientes.getTelefone() + "\t"
                             + String.format("%-20s", "    |" + listaClientes.getMatricula() + "\t"
@@ -149,7 +157,7 @@ public class ClienteServico {
                 + String.format("%-20s", "|Quantidade de livros alugados")
                 + String.format("%-20s", "    |Quantidade de atrasos"));
         for (Cliente listaClientes : listaClienteTemp) {
-               System.out.println(String.format("%-10s", listaClientes.getRg()) + "\t"
+            System.out.println(String.format("%-10s", listaClientes.getRg()) + "\t"
                     + String.format("%-20s", "|" + listaClientes.getNome()) + "\t"
                     + String.format("%-20s", "|" + listaClientes.getTelefone() + "\t"
                             + String.format("%-20s", "    |" + listaClientes.getMatricula() + "\t"
