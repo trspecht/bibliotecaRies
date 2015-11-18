@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Cliente;
+/**
+ * Classe que implementa o ClienteDao;
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ */
 
 public class ClienteDaoBd implements ClienteDao {
 

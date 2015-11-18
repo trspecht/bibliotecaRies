@@ -12,6 +12,11 @@ import java.util.logging.Logger;
 import model.Aluguel;
 import model.Devolucao;
 
+/**
+ * Classe que implementa o DevolucaoDao;
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ */
 public class DevolucaoDaoBd implements DevolucaoDao {
 
     private Connection conexao;

@@ -12,7 +12,11 @@ import java.util.logging.Logger;
 import model.Aluguel;
 import model.Cliente;
 import model.Livro;
-
+/**
+ * Classe que implementa o AluguelDao;
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ */
 public class AluguelDaoBd implements AluguelDao {
 
     private Connection conexao;

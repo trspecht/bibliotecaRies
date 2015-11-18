@@ -11,6 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Livro;
 
+/**
+ * Classe que implementa o LivroDao;
+ * @author Tainara Specht
+ * @author Diego Peixoto
+ */
 public class LivroDaoBd implements LivroDao {
 
     private Connection conexao;
