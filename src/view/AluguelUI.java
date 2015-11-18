@@ -14,14 +14,11 @@ import view.menu.AluguelMenu;
 
 public class AluguelUI {
 
-    private AluguelServico servicoA;
-    private ClienteServico servicoC;
-    private LivroServico servicoL;
+    private final AluguelServico servicoA = new AluguelServico();
+    private final ClienteServico servicoC = new ClienteServico();
+    private final LivroServico servicoL = new LivroServico();
 
     public AluguelUI() {
-        servicoA = new AluguelServico();
-        servicoC = new ClienteServico();
-        servicoL = new LivroServico();
     }
 
     public void executar() {

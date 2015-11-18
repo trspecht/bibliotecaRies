@@ -13,10 +13,9 @@ import view.menu.LivroMenu;
 
 public class LivroUI {
 
-    private LivroServico servicoL;
+    private final LivroServico servicoL = new LivroServico();
 
     public LivroUI() {
-        this.servicoL = new LivroServico();
     }
 
     public void executar() {

@@ -31,20 +31,3 @@ public class DevolucaoServico {
     }
 
 }
-//    public void clientesQueMaisAlugam() {
-//        List<Cliente> listaClienteTemp = new ClienteDaoBd().listar();
-//        Collections.sort(listaClienteTemp, new ClienteCompAluguel());
-//        for (Cliente listaClientes : listaClienteTemp) {
-//            System.out.println("Nome: " + listaClientes.getNome() + " Matrícula: " + listaClientes.getMatricula()
-//                    + " Quantidade de Livros alugados: " + listaClientes.getQntdelivrosalugados());
-//        }
-//    }
-//
-//    public class AluguelCompAluguel implements Comparator<Aluguel> {
-//
-//        @Override
-//        public int compare(Aluguel a1, Aluguel a2) {
-//            return a2.getQntdelivrosalugados() - a1.getQntdelivrosalugados();
-//        }
-//    }
-//}

@@ -21,13 +21,7 @@ public class Devolucao {
     /**
      * Construtor da classe
      *
-     * @param aIn
      */
-    public Devolucao() {
-        Date data = new Date();
-        this.dataDevolucao = data;
-    }
-
     public Devolucao(Aluguel aluguelIn, Date dataDevolucao) {
         this.aluguel = aluguelIn;
         Date data = new Date();

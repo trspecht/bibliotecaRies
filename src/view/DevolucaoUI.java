@@ -1,7 +1,5 @@
 package view;
 
-import dao.ClienteDao;
-import dao.ClienteDaoBd;
 import java.time.Instant;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -15,12 +13,10 @@ import view.menu.DevolucaoMenu;
 
 public class DevolucaoUI {
 
-    private DevolucaoServico servicoD;
-    private AluguelServico servicoA;
+    private final DevolucaoServico servicoD = new DevolucaoServico();
+    private final AluguelServico servicoA = new AluguelServico();
 
     public DevolucaoUI() {
-        servicoA = new AluguelServico();
-        servicoD = new DevolucaoServico();
     }
 
     public void executar() {

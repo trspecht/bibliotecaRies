@@ -8,10 +8,9 @@ import view.menu.ClienteMenu;
 
 public class ClienteUI {
 
-    private ClienteServico servicoC;
+    private final ClienteServico servicoC = new ClienteServico();
 
     public ClienteUI() {
-        servicoC = new ClienteServico();
     }
 
     public void executar() {
