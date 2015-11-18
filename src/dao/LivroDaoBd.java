@@ -18,7 +18,7 @@ public class LivroDaoBd implements LivroDao {
 
     @Override
     public void inserir(Livro livro) {
-        int cod = 0;
+        int cod;
         try {
             String sql = "INSERT INTO livro (isbn, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado) "
                     + "VALUES (?,?,?,?,?,?,?)";
@@ -79,7 +79,7 @@ public class LivroDaoBd implements LivroDao {
             fecharConexao();
         }
     }
-    
+
     @Override
     public void editar(Livro l, long novoX, String coluna) {
         String sql = "UPDATE livro SET " + coluna + "=(?) WHERE cod=(?)";
@@ -115,7 +115,7 @@ public class LivroDaoBd implements LivroDao {
                 String anoPublicacao = resultado.getString("anoPublicacao");
                 Boolean disponibilidade = resultado.getBoolean("disponibilidade");
                 int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
-                
+
                 Livro livro = new Livro(cod, isbn, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
 
                 listaLivros.add(livro);
@@ -152,6 +152,41 @@ public class LivroDaoBd implements LivroDao {
                 int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
 
                 Livro livro = new Livro(cod, isbnX, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
+
+                return livro;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LivroDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+
+        return (null);
+    }
+
+    @Override
+    public Livro procurarPorId(int id) {
+        String sql = "SELECT * FROM livro WHERE cod = ?";
+
+        try {
+            conectar(sql);
+            comando.setInt(1, id);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                int cod = resultado.getInt("cod");
+                long isbn = resultado.getLong("isbn");
+                String titulo = resultado.getString("titulo");
+                String editora = resultado.getString("editora");
+                String autor = resultado.getString("autor");
+                String anoPublicacao = resultado.getString("anoPublicacao");
+                boolean disponibilidade = resultado.getBoolean("disponibilidade");
+                int qntdeTotalAlugado = resultado.getInt("qntdeTotalAlugado");
+
+                Livro livro = new Livro(cod, isbn, titulo, editora, autor, anoPublicacao, disponibilidade, qntdeTotalAlugado);
 
                 return livro;
 

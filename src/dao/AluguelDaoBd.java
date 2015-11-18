@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Aluguel;
+import model.Cliente;
+import model.Livro;
 
 public class AluguelDaoBd implements AluguelDao {
 
@@ -21,19 +23,17 @@ public class AluguelDaoBd implements AluguelDao {
     //Caso queira retornar, só retornar id.
     @Override
     public void inserir(Aluguel aluguel) {
-        int id = 0;
+        int id;
         try {
-            String sql = "INSERT INTO aluguel (codigo, data, id, cod) "
-                    + "VALUES (?,?,?,?)";
-
+            String sql = "INSERT INTO aluguel (dataAluguel, idCliente, codLivro) "
+                    + "VALUES (?,?,?)";
             //Foi criado um novo método conectar para obter o id
             conectarObtendoId(sql);
-            comando.setLong(1, aluguel.getCodigo());
             //Trabalhando com data: lembrando dataUtil -> dataSql
             java.sql.Date dataSql = new java.sql.Date(aluguel.getDataAluguel().getTime());
-            comando.setDate(2, dataSql);
-            comando.setInt(3, aluguel.getC().getId());
-            comando.setInt(4, aluguel.getLivrosAlugados().getCod());
+            comando.setDate(1, dataSql);
+            comando.setInt(2, aluguel.getC().getId());
+            comando.setInt(3, aluguel.getLivrosAlugados().getCod());
             comando.executeUpdate();
             //Obtém o resultSet para pegar o id
             ResultSet resultado = comando.getGeneratedKeys();
@@ -125,20 +125,23 @@ public class AluguelDaoBd implements AluguelDao {
     @Override
     public List<Aluguel> listar() {
         List<Aluguel> listaAluguel = new ArrayList<>();
-        String sql = "SELECT * FROM aluguel ORDER BY codigo";
+        String sql = "SELECT * FROM aluguel ORDER BY idAluguel";
         try {
             conectar(sql);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
                 int idAluguel = resultado.getInt("idAluguel");
-                long codigo = resultado.getLong("codigo");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
                 java.sql.Date dataSql = resultado.getDate("dataAluguel");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
-                int id = resultado.getInt("id");
-                int cod = resultado.getInt("cod");
+                int id = resultado.getInt("idCliente");
+                int cod = resultado.getInt("codLivro");
+                ClienteDao clienteDao = new ClienteDaoBd();
+                LivroDao livroDao = new LivroDaoBd();
+                Cliente cli = clienteDao.procurarPorId(id);
+                Livro livro = livroDao.procurarPorId(cod);
 
-                Aluguel aluguel = new Aluguel(idAluguel, codigo, dataUtil, id, codigo);
+                Aluguel aluguel = new Aluguel(idAluguel, dataUtil, cli, livro);
                 listaAluguel.add(aluguel);
             }
         } catch (SQLException ex) {
@@ -150,25 +153,28 @@ public class AluguelDaoBd implements AluguelDao {
     }
 
     @Override
-    public Aluguel procurarPorCodigo(long codigo) {
-        String sql = "SELECT * FROM aluguel WHERE codigo = ?";
+    public Aluguel procurarPorId(int id) {
+        String sql = "SELECT * FROM aluguel WHERE idAluguel = ?";
 
         try {
             conectar(sql);
-            comando.setLong(1, codigo);
+            comando.setLong(1, id);
 
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                int idAluguel = resultado.getInt("idAluguel");
-                long codigoX = resultado.getLong("codigo");
+               int idAluguel = resultado.getInt("idAluguel");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
                 java.sql.Date dataSql = resultado.getDate("dataAluguel");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
-                int id = resultado.getInt("id");
-                int cod = resultado.getInt("cod");
+                int idX = resultado.getInt("idCliente");
+                int cod = resultado.getInt("codLivro");
+                ClienteDao clienteDao = new ClienteDaoBd();
+                LivroDao livroDao = new LivroDaoBd();
+                Cliente cli = clienteDao.procurarPorId(idX);
+                Livro livro = livroDao.procurarPorId(cod);
 
-                Aluguel aluguel = new Aluguel(idAluguel, codigoX, dataUtil, id, codigo);
+                Aluguel aluguel = new Aluguel(idAluguel, dataUtil, cli, livro);
                 return aluguel;
             }
         } catch (SQLException ex) {

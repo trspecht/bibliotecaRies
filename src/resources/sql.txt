@@ -5,7 +5,8 @@ rg BIGINT NOT NULL,
 telefone VARCHAR(20) NOT NULL,
 matricula BIGINT NOT NULL,
 livrosAlugados INTEGER NOT NULL,
-qntdelivrosalugados INTEGER NOT NULL
+qntdelivrosalugados INTEGER NOT NULL,
+qntdeatraso INTEGER NOT NULL
 );
 
 CREATE TABLE livro(
@@ -21,20 +22,16 @@ qntdeTotalAlugado INTEGER NOT NULL
 
 CREATE TABLE aluguel (
 idAluguel SERIAL PRIMARY KEY NOT NULL,
-codigo BIGINT NOT NULL,
-data DATE,
-id int REFERENCES cliente(id),
-cod int REFERENCES livro(cod)
+dataAluguel DATE,
+idCliente int REFERENCES cliente(id),
+codLivro int REFERENCES livro(cod)
 );
 
-CREATE TABLE itemreceituario (
-id serial primary key,
-posologia varchar(30),
-codMedicamento int REFERENCES medicamento(codigo),
-codConsulta int REFERENCES consulta(codigo)
+CREATE TABLE devolucao (
+idDevolucao serial primary key,
+idAluguel int REFERENCES aluguel(idAluguel),
+idCliente int REFERENCES cliente(id),
+codLivro int REFERENCES livro(cod),
+dataDevolucao DATE NOT NULL
 );
 
-DELETE FROM paciente;
-ALTER SEQUENCE paciente_id_seq RESTART WITH 1;
-
-SELECT * FROM paciente;

@@ -7,7 +7,7 @@ package model;
  */
 public class Cliente {
 
-    private int id, livrosAlugados, qntdelivrosalugados;
+    private int id, livrosAlugados, qntdelivrosalugados, qntdeatraso;
     private String nome, telefone;
     private Long matricula, rg;
 
@@ -26,6 +26,7 @@ public class Cliente {
         this.matricula = matriculaIn;
         this.livrosAlugados = 0;
         this.qntdelivrosalugados = 0;
+        this.qntdeatraso = 0;
     }
 
     public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn) {
@@ -36,9 +37,10 @@ public class Cliente {
         this.matricula = matriculaIn;
         this.livrosAlugados = 0;
         this.qntdelivrosalugados = 0;
+        this.qntdeatraso = 0;
     }
     
-     public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn, int livrosAlugadosIn, int qntdelivrosalugadosIn) {
+     public Cliente(int idIn, String nomeIn, long rgIn, String telefoneIn, long matriculaIn, int livrosAlugadosIn, int qntdelivrosalugadosIn, int qntdeatrasoIn) {
         this.id = idIn;
         this.nome = nomeIn;
         this.rg = rgIn;
@@ -46,6 +48,7 @@ public class Cliente {
         this.matricula = matriculaIn;
         this.livrosAlugados = livrosAlugadosIn;
         this.qntdelivrosalugados = qntdelivrosalugadosIn;
+        this.qntdeatraso = qntdeatrasoIn;
     }
      
     public void setNome(String nomeIn) {
@@ -86,6 +89,14 @@ public class Cliente {
 
     public int getQntdelivrosalugados() {
         return qntdelivrosalugados;
+    }
+
+    public int getQntdeatraso() {
+        return qntdeatraso;
+    }
+
+    public void setQntdeatraso(int qntdeatraso) {
+        this.qntdeatraso = qntdeatraso;
     }
 
     public void setId(int idIn) {

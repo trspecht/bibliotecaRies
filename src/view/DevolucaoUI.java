@@ -1,7 +1,10 @@
 package view;
 
+import dao.ClienteDao;
+import dao.ClienteDaoBd;
 import java.time.Instant;
 import java.util.Date;
+import java.util.InputMismatchException;
 import model.Aluguel;
 import model.Devolucao;
 import servico.AluguelServico;
@@ -35,28 +38,29 @@ public class DevolucaoUI {
             }
         }
     }
-    
-    private void devolverLivro() {
-        long codigo = Console.scanLong("Digite o código do aluguel do livro que deseja devolver: ");
-        servicoA.CodigoExiste(codigo);
-        if (servicoA.CodigoExiste(codigo) == false) {
-            System.out.println("Não existe livro alugado com este código em no nosso sistema!");
-            return;
-        }
-        Aluguel alu = servicoA.buscarPorCodigo(codigo);
-        @SuppressWarnings("UnusedAssignment")
-        Date data = new Date();
-        data = Date.from(Instant.now());
-        int qntDias = servicoD.difDatas(alu, data);
-        System.out.println(qntDias);
-        if (qntDias > 7) {
-            System.out.println("Você está com o livro atrasado, favor acertar pendência com a administração!");
-            return;
-        }
-        servicoD.addDevolucao(new Devolucao());
-        System.out.println("Livro devolvido com sucesso!");
-    }
 
-   
+    private void devolverLivro() {
+        boolean atrasado = false;
+        try {
+            int idAluguel = Console.scanInt("Digite o código do aluguel do livro que deseja devolver: ");
+            if (servicoA.CodigoExiste(idAluguel) == false) {
+                System.out.println("Não existe livro alugado com este código em no nosso sistema!");
+                return;
+            }
+            Aluguel alu = servicoA.buscarPorCodigo(idAluguel);
+            Date data = new Date();
+            data = Date.from(Instant.now());
+            int qntDias = servicoD.difDatas(alu, data);
+            if (qntDias > 7) {
+                double multa = 1.00 * qntDias;
+                System.out.println("Você está com o livro atrasado, favor acertar a multa de atraso no valor de " + multa + " com a administração!");
+                atrasado = true;
+            }
+            servicoD.addDevolucao(new Devolucao(alu, data),atrasado);
+            System.out.println("Livro devolvido com sucesso!");
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida!");
+        }
+    }
 
 }

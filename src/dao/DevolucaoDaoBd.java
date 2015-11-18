@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Aluguel;
 import model.Devolucao;
 
 public class DevolucaoDaoBd implements DevolucaoDao {
@@ -19,34 +20,34 @@ public class DevolucaoDaoBd implements DevolucaoDao {
     //Metodo inserir alterado para trabalhar com data e receber o id auto 
     //increment e já inserir no objeto paciente (recebido por parâmetro)
     //Caso queira retornar, só retornar id.
-    
     @Override
-    public void inserir(Devolucao devolucao) {
-        int id = 0;
+    public void inserir(Devolucao devolucao, boolean atrasado) {
+        int id;
         try {
-            String sql = "INSERT INTO devolucao (codigo, data, id, cod) "
+            String sql = "INSERT INTO devolucao (idAluguel, idCliente, codLivro, dataDevolucao) "
                     + "VALUES (?,?,?,?)";
 
             //Foi criado um novo método conectar para obter o id
             conectarObtendoId(sql);
-            comando.setLong(1, devolucao.getCodigo());
+            comando.setInt(1, devolucao.getAluguel().getId());
+            comando.setInt(2, devolucao.getAluguel().getC().getId());
+            comando.setInt(3, devolucao.getAluguel().getLivrosAlugados().getCod());
             //Trabalhando com data: lembrando dataUtil -> dataSql
-            java.sql.Date dataSql = new java.sql.Date(devolucao.getDataAluguel().getTime());
-            comando.setDate(2, dataSql);
-            comando.setInt(3, devolucao.getC().getId());
-            comando.setInt(4, devolucao.getLivrosAlugados().getCod());
+            java.sql.Date dataSql = new java.sql.Date(devolucao.getDataDevolucao().getTime());
+            comando.setDate(4, dataSql);
             comando.executeUpdate();
             //Obtém o resultSet para pegar o id
             ResultSet resultado = comando.getGeneratedKeys();
             if (resultado.next()) {
                 //seta o id para o objeto
                 id = resultado.getInt(1);
-                devolucao.setId(id);
+                devolucao.setIdDevolucao(id);
             }
             atualizarCliente(devolucao);
             atualizarLivro(devolucao);
-            atualizarQntLivro(devolucao);
-            atualizarQntLivrosAlugadosCliente(devolucao);
+            if (atrasado == true) {
+                atualizarAtrasoCliente(devolucao);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(DevolucaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,22 +55,37 @@ public class DevolucaoDaoBd implements DevolucaoDao {
             fecharConexao();
         }
 
-        //Caso queira retornar id:
-        //return (id);
     }
 
     @Override
     public void atualizarCliente(Devolucao devolucao) {
         try {
             String sql = "UPDATE cliente SET livrosAlugados=(livrosAlugados-1) "
-                    + "WHERE id=?";
+                    + "WHERE id=(?)";
 
             conectar(sql);
-            comando.setInt(1, devolucao.getC().getId());
+            comando.setInt(1, devolucao.getAluguel().getC().getId());
             comando.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(AluguelDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DevolucaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+    }
+
+    @Override
+    public void atualizarAtrasoCliente(Devolucao devolucao) {
+        try {
+            String sql = "UPDATE cliente SET qntdeatraso=(qntdeatraso+1) "
+                    + "WHERE id=(?)";
+
+            conectar(sql);
+            comando.setInt(1, devolucao.getAluguel().getC().getId());
+            comando.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DevolucaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }
@@ -78,14 +94,13 @@ public class DevolucaoDaoBd implements DevolucaoDao {
     @Override
     public void atualizarLivro(Devolucao devolucao) {
         try {
-            String sql = "UPDATE livro SET disponibilidade=true "
-                    + "WHERE cod=?";
+            String sql = "UPDATE livro SET disponibilidade=true WHERE cod=(?)";
             conectar(sql);
-            comando.setInt(1, devolucao.getLivrosAlugados().getCod());
+            comando.setInt(1, devolucao.getAluguel().getLivrosAlugados().getCod());
             comando.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(AluguelDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DevolucaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }
@@ -94,20 +109,19 @@ public class DevolucaoDaoBd implements DevolucaoDao {
     @Override
     public List<Devolucao> listar() {
         List<Devolucao> listaDevolucao = new ArrayList<>();
-        String sql = "SELECT * FROM devolucao ORDER BY codigo";
+        String sql = "SELECT * FROM devolucao ORDER BY idDevolucao";
         try {
             conectar(sql);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
+                int idDevolucao = resultado.getInt("idDevolucao");
                 int idAluguel = resultado.getInt("idAluguel");
-                long codigo = resultado.getLong("codigo");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
                 java.sql.Date dataSql = resultado.getDate("dataAluguel");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
-                int id = resultado.getInt("id");
-                int cod = resultado.getInt("cod");
-
-                Devolucao devolucao = new Devolucao(idAluguel, codigo, dataUtil, id, codigo);
+                AluguelDao aluguelDao = new AluguelDaoBd();
+                Aluguel aluguel = aluguelDao.procurarPorId(idAluguel);
+                Devolucao devolucao = new Devolucao(idDevolucao, aluguel, dataUtil);
                 listaDevolucao.add(devolucao);
             }
         } catch (SQLException ex) {
@@ -119,29 +133,28 @@ public class DevolucaoDaoBd implements DevolucaoDao {
     }
 
     @Override
-    public Devolucao procurarPorCodigo(long codigo) {
-        String sql = "SELECT * FROM aluguel WHERE codigo = ?";
+    public Devolucao procurarPorId(int id) {
+        String sql = "SELECT * FROM devolucao WHERE idDevolucao = ?";
 
         try {
             conectar(sql);
-            comando.setLong(1, codigo);
+            comando.setInt(1, id);
 
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
+                int idDevolucao = resultado.getInt("idDevolucao");
                 int idAluguel = resultado.getInt("idAluguel");
-                long codigoX = resultado.getLong("codigo");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
                 java.sql.Date dataSql = resultado.getDate("dataAluguel");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
-                int id = resultado.getInt("id");
-                int cod = resultado.getInt("cod");
-
-                Aluguel aluguel = new Aluguel(idAluguel, codigoX, dataUtil, id, codigo);
-                return aluguel;
+                AluguelDao aluguelDao = new AluguelDaoBd();
+                Aluguel aluguel = aluguelDao.procurarPorId(idAluguel);
+                Devolucao devolucao = new Devolucao(idDevolucao, aluguel, dataUtil);
+                return devolucao;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AluguelDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DevolucaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }

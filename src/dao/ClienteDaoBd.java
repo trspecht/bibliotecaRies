@@ -21,10 +21,10 @@ public class ClienteDaoBd implements ClienteDao {
     //Caso queira retornar, só retornar id.
     @Override
     public void inserir(Cliente cliente) {
-        int id = 0;
+        int id;
         try {
-            String sql = "INSERT INTO cliente (nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados) "
-                    + "VALUES (?,?,?,?,?,?)";
+            String sql = "INSERT INTO cliente (nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados, qntdeatraso) "
+                    + "VALUES (?,?,?,?,?,?,?)";
 
             //Foi criado um novo método conectar para obter o id
             conectarObtendoId(sql);
@@ -34,6 +34,7 @@ public class ClienteDaoBd implements ClienteDao {
             comando.setLong(4, cliente.getMatricula());
             comando.setInt(5, cliente.getLivrosAlugados());
             comando.setInt(6, cliente.getQntdelivrosalugados());
+            comando.setInt(7, cliente.getQntdeatraso());
             comando.executeUpdate();
             //Obtém o resultSet para pegar o id
             ResultSet resultado = comando.getGeneratedKeys();
@@ -119,8 +120,9 @@ public class ClienteDaoBd implements ClienteDao {
                 long matricula = resultado.getLong("matricula");
                 int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
+                int qntdeatraso = resultado.getInt("qntdeatraso");
 
-                Cliente cli = new Cliente(id, nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
+                Cliente cli = new Cliente(id, nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados, qntdeatraso);
 
                 listaClientes.add(cli);
 
@@ -152,8 +154,9 @@ public class ClienteDaoBd implements ClienteDao {
                 long matricula = resultado.getLong("matricula");
                 int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
+                int qntdeatraso = resultado.getInt("qntdeatraso");
 
-                Cliente cli = new Cliente(id, nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
+                Cliente cli = new Cliente(id, nome, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados, qntdeatraso);
 
                 return cli;
 
@@ -186,8 +189,9 @@ public class ClienteDaoBd implements ClienteDao {
                 long matricula = resultado.getLong("matricula");
                 int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
+                int qntdeatraso = resultado.getInt("qntdeatraso");
 
-                Cliente cli = new Cliente(id, nome, rgX, telefone, matricula, livrosAlugados, qntdelivrosalugados);
+                Cliente cli = new Cliente(id, nome, rgX, telefone, matricula, livrosAlugados, qntdelivrosalugados, qntdeatraso);
 
                 return cli;
 
@@ -220,8 +224,9 @@ public class ClienteDaoBd implements ClienteDao {
                 long matricula = resultado.getLong("matricula");
                 int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
+                int qntdeatraso = resultado.getInt("qntdeatraso");
 
-                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
+                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados, qntdeatraso);
 
                 return cli;
 
@@ -254,8 +259,9 @@ public class ClienteDaoBd implements ClienteDao {
                 long matriculaX = resultado.getLong("matricula");
                 int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
+                int qntdeatraso = resultado.getInt("qntdeatraso");
 
-                Cliente cli = new Cliente(id, nome, rg, telefone, matriculaX, livrosAlugados, qntdelivrosalugados);
+                Cliente cli = new Cliente(id, nome, rg, telefone, matriculaX, livrosAlugados, qntdelivrosalugados, qntdeatraso);
 
                 return cli;
 
@@ -288,8 +294,9 @@ public class ClienteDaoBd implements ClienteDao {
                 long matricula = resultado.getLong("matricula");
                 int livrosAlugados = resultado.getInt("livrosAlugados");
                 int qntdelivrosalugados = resultado.getInt("qntdelivrosalugados");
+                int qntdeatraso = resultado.getInt("qntdeatraso");
 
-                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados);
+                Cliente cli = new Cliente(id, nomeX, rg, telefone, matricula, livrosAlugados, qntdelivrosalugados, qntdeatraso);
 
                 listaClientes.add(cli);
 

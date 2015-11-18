@@ -10,25 +10,14 @@ import model.Aluguel;
 
 public class AluguelServico {
 
-    public boolean CodigoExiste(long codigo) {
+    public boolean CodigoExiste(int id) {
         AluguelDao dao = new AluguelDaoBd();
-        Aluguel aluguel = dao.procurarPorCodigo(codigo);
+        Aluguel aluguel = dao.procurarPorId(id);
         if (aluguel != null) {
             return true;
         } else {
             return false;
         }
-    }
-
-    public long randomCodigo() {
-        Date n = new Date();
-        long codigoNumero = n.getTime();
-        return codigoNumero;
-    }
-
-    public long gerarCodigo() {
-        long codigo = randomCodigo();
-        return codigo;
     }
 
     public void addAluguel(Aluguel a) {
@@ -39,9 +28,9 @@ public class AluguelServico {
         return (new AluguelDaoBd().listar());
     }
     
-    public Aluguel buscarPorCodigo(long codigo) {
+    public Aluguel buscarPorCodigo(int id) {
         AluguelDao dao = new AluguelDaoBd();
-        Aluguel aluguel = dao.procurarPorCodigo(codigo);
+        Aluguel aluguel = dao.procurarPorId(id);
         return aluguel;
     }
 

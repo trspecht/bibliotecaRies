@@ -9,11 +9,10 @@ public class MainUI {
     }
 
     public void executar() {
-        int opcao = 0;
-        do {
-            System.out.println(MainMenu.getOpcoes());
-            opcao = Console.scanInt("Digite sua opção:");
-            switch (opcao) {
+        String op = "";
+        while (!op.equals("0")) {
+            op = Console.scanString(MainMenu.getOpcoes() + "\nDigite sua opção:");
+            switch (op) {
                 case MainMenu.OP_CLIENTE:
                     new ClienteUI().executar();
                     break;
@@ -25,10 +24,10 @@ public class MainUI {
                     break;
                 case MainMenu.OP_DEVOLUCAO:
                     new DevolucaoUI().executar();
-//                    break;
-//                case MainMenu.OP_HISTORICO:
-//                    new HistoricoUI(listaConsultas).executar();
-//                    break;
+                    break;
+                case MainMenu.OP_CONSULTA:
+                    new ConsultaUI().executar();
+                    break;
                 case MainMenu.OP_SAIR:
                     System.out.println("Aplicação finalizada!!!");
                     break;
@@ -36,8 +35,7 @@ public class MainUI {
                     System.out.println("Opção inválida..");
 
             }
-        } while (opcao != MainMenu.OP_SAIR);
+        }
     }
 
 }
-

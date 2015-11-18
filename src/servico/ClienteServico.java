@@ -40,16 +40,6 @@ public class ClienteServico {
         }
     }
 
-    public boolean matriculaExiste(int id) {
-        ClienteDao dao = new ClienteDaoBd();
-        Cliente cliente = dao.procurarPorId(id);
-        if (cliente != null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public long randomMatricula() {
         Date n = new Date();
         long matriculaNumero = n.getTime();
@@ -119,7 +109,7 @@ public class ClienteServico {
         }
         return espacos == true;
     }
-            
+
     public boolean isTelefone(String novoTelefone) {
         return novoTelefone.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}")
                 || novoTelefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
@@ -128,9 +118,44 @@ public class ClienteServico {
     public void clientesQueMaisAlugam() {
         List<Cliente> listaClienteTemp = new ClienteDaoBd().listar();
         Collections.sort(listaClienteTemp, new ClienteCompAluguel());
+       System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-10s", "RG") + "\t"
+                + String.format("%-20s", "|Nome") + "\t"
+                + String.format("%-20s", "|Telefone")
+                + String.format("%-20s", "|Matrícula")
+                + String.format("%-20s", "|Livros em posse")
+                + String.format("%-20s", "|Quantidade de livros alugados")
+                + String.format("%-20s", "    |Quantidade de atrasos"));
         for (Cliente listaClientes : listaClienteTemp) {
-            System.out.println("Nome: " + listaClientes.getNome() + " Matrícula: " + listaClientes.getMatricula()
-                    + " Quantidade de Livros alugados: " + listaClientes.getQntdelivrosalugados());
+                System.out.println(String.format("%-10s", listaClientes.getRg()) + "\t"
+                    + String.format("%-20s", "|" + listaClientes.getNome()) + "\t"
+                    + String.format("%-20s", "|" + listaClientes.getTelefone() + "\t"
+                            + String.format("%-20s", "    |" + listaClientes.getMatricula() + "\t"
+                                    + String.format("%-20s", "|" + listaClientes.getLivrosAlugados() + "\t"
+                                            + String.format("%-20s", "            |" + listaClientes.getQntdelivrosalugados()
+                                                    + String.format("%-20s", "                                |" + listaClientes.getQntdeatraso()))))));
+        }
+    }
+
+    public void clientesQueMaisAtrasam() {
+        List<Cliente> listaClienteTemp = new ClienteDaoBd().listar();
+        Collections.sort(listaClienteTemp, new ClienteCompAtraso());
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-10s", "RG") + "\t"
+                + String.format("%-20s", "|Nome") + "\t"
+                + String.format("%-20s", "|Telefone")
+                + String.format("%-20s", "|Matrícula")
+                + String.format("%-20s", "|Livros em posse")
+                + String.format("%-20s", "|Quantidade de livros alugados")
+                + String.format("%-20s", "    |Quantidade de atrasos"));
+        for (Cliente listaClientes : listaClienteTemp) {
+               System.out.println(String.format("%-10s", listaClientes.getRg()) + "\t"
+                    + String.format("%-20s", "|" + listaClientes.getNome()) + "\t"
+                    + String.format("%-20s", "|" + listaClientes.getTelefone() + "\t"
+                            + String.format("%-20s", "    |" + listaClientes.getMatricula() + "\t"
+                                    + String.format("%-20s", "|" + listaClientes.getLivrosAlugados() + "\t"
+                                            + String.format("%-20s", "            |" + listaClientes.getQntdelivrosalugados()
+                                                    + String.format("%-20s", "                                |" + listaClientes.getQntdeatraso()))))));
         }
     }
 
@@ -141,4 +166,13 @@ public class ClienteServico {
             return c2.getQntdelivrosalugados() - c1.getQntdelivrosalugados();
         }
     }
+
+    public class ClienteCompAtraso implements Comparator<Cliente> {
+
+        @Override
+        public int compare(Cliente c1, Cliente c2) {
+            return c2.getQntdeatraso() - c1.getQntdeatraso();
+        }
+    }
+
 }

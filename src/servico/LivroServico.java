@@ -85,13 +85,28 @@ public class LivroServico {
 
     public void VisualizarLivroDisponivel() {
         List<Livro> listaLivroTemp = new LivroDaoBd().listar();
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-10s", "Isbn: ") + "\t"
+                + String.format("%-20s", "|Titulo: ") + "\t"
+                + String.format("%-20s", "|Editora: ") + "\t"
+                + String.format("%-20s", "|Autor(es): ") + "\t"
+                + String.format("%-20s", "|Ano de Publicação: ") + "\t"
+                + String.format("%-20s", "|Quantidade de vezes que foi alugado: "));
         for (Livro listaLivro : listaLivroTemp) {
             if (listaLivro.isDisponibilidade() == true) {
-                System.out.println(listaLivro);
+                System.out.println(String.format("%-10s", listaLivro.getIsbn()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getTitulo()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getEditora()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getAutor()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getAnoPublicacao()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getQntdeTotalAlugado()));
             }
         }
     }
 
+    
+        
+        
     public boolean validarAnoPublicacao(String campo) {
         return campo.matches("[0-9]{4}+");
     }
@@ -99,15 +114,23 @@ public class LivroServico {
     public void livrosMaisRetirados() {
         List<Livro> listaLivroTemp = new LivroDaoBd().listar();
         Collections.sort(listaLivroTemp, new livroCompRetirados());
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-10s", "Isbn: ") + "\t"
+                + String.format("%-20s", "|Titulo: ") + "\t"
+                + String.format("%-20s", "|Editora: ") + "\t"
+                + String.format("%-20s", "|Autor(es): ") + "\t"
+                + String.format("%-20s", "|Ano de Publicação: ") + "\t"
+                + String.format("%-20s", "|Quantidade de vezes que foi alugado: "));
         for (Livro listaLivro : listaLivroTemp) {
-            System.out.println("Isbn: " + listaLivro.getIsbn() + " \nTitulo: " + listaLivro.getTitulo()
-                    + " \nEditora: " + listaLivro.getEditora() + " \nAutor(es): " + listaLivro.getAutor()
-                    + " \nAno de Publicação: " + listaLivro.getAnoPublicacao() + " \nQuantidade de vezes que foi alugado: "
-                    + listaLivro.getQntdeTotalAlugado());
+            System.out.println(String.format("%-10s", listaLivro.getIsbn()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getTitulo()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getEditora()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getAutor()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getAnoPublicacao()) + "\t"
+                    + String.format("%-20s", "|" + listaLivro.getQntdeTotalAlugado()));
         }
-
     }
-
+    
     public class livroCompRetirados implements Comparator<Livro> {
 
         @Override

@@ -14,8 +14,7 @@ import java.util.Date;
  */
 public class Aluguel {
 
-    private long codigo, cod;
-    private int idAluguel, id;
+    private int idAluguel;
     private Cliente c;
     private Livro livrosAlugados;
     private Date dataAluguel;
@@ -26,49 +25,28 @@ public class Aluguel {
      * @param cIn
      * @param livrosAlugadosIn
      * @param dataAluguelIn
-     * @param codIn
-     * @param c - recebe o objeto cliente
-     * @param livrosAlugados - recebe o objeto livro
-     * @param dataAluguel - recebe a data em que foi efetuada a transação
-     * @param cod
      */
-    public Aluguel(Cliente cIn, Livro livrosAlugadosIn, Date dataAluguelIn, long codIn) {
+    public Aluguel(Date dataAluguelIn, Cliente cIn, Livro livrosAlugadosIn) {
+        this.dataAluguel = dataAluguelIn;
         this.c = cIn;
         this.livrosAlugados = livrosAlugadosIn;
-        this.dataAluguel = dataAluguelIn;
-        this.codigo = codIn;  
+
     }
 
-    public Aluguel(int idIn, Cliente cIn, Livro livrosAlugadosIn, Date dataAluguelIn, long codIn) {
-        this.idAluguel = idIn;
+    public Aluguel(int idAluguelIn, Date dataAluguelIn, Cliente cIn, Livro livrosAlugadosIn) {
+        this.idAluguel = idAluguelIn;
+        this.dataAluguel = dataAluguelIn;
         this.c = cIn;
         this.livrosAlugados = livrosAlugadosIn;
-        this.dataAluguel = dataAluguelIn;
-        this.codigo = codIn;
+
     }
 
-    public Aluguel(int idAluguel, long codigo, Date dataUtil, int id, long cod) {
-        this.idAluguel = idAluguel;
-        this.codigo = codigo;
-        this.dataAluguel = dataUtil;
-        this.id = id;
-        this.cod = cod;
-    }
-    
     public void setId(int id) {
         this.idAluguel = id;
     }
 
     public int getId() {
         return idAluguel;
-    }
-
-    public void setCodigo(int cod) {
-        this.codigo = cod;
-    }
-
-    public long getCodigo() {
-        return codigo;
     }
 
     public void setC(Cliente c) {
@@ -97,7 +75,9 @@ public class Aluguel {
 
     @Override
     public String toString() {
-        return "\nCódigo para devolução: " + codigo + "\nCliente: " + c + "\nLivro Alugado: " + livrosAlugados + "\nDataAluguel= " + dataAluguel;
+        return "Dados do aluguel: " + "\nCódigo do Aluguel: " + idAluguel + " \nNome do cliente: " + c.getNome()
+                +"\nTitulo do livro alugado: " + livrosAlugados.getTitulo()
+                + "\nData do aluguel: " + dataAluguel;
     }
 
 }

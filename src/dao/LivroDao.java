@@ -11,6 +11,7 @@ public interface LivroDao {
     public void editar(Livro livro, String novoX, String coluna);
     public List<Livro> listar();
     public Livro procurarPorIsbn(long isbn);
+    public Livro procurarPorId(int id);
     public Livro procurarPorTitulo(String titulo);
     public List<Livro> listarPorTitulo(String titulo);    
 }

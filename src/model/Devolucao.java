@@ -13,41 +13,52 @@ import java.util.Date;
  * @author Diego Peixoto Classe Models para classe Devolucao
  */
 public class Devolucao {
-    
-    private int codDevolucao, codigoCliente, codigoLivro;
+
+    private int idDevolucao;
     private Date dataDevolucao;
-    private Aluguel a;
+    private Aluguel aluguel;
 
     /**
      * Construtor da classe
      *
      * @param aIn
      */
-    public Devolucao(Aluguel aIn) {
-        this.a = aIn;
+    public Devolucao() {
         Date data = new Date();
         this.dataDevolucao = data;
     }
 
-     public Devolucao(int codIn, int codCliente, int codLivro, Aluguel aIn) {
-        this.codDevolucao = codIn;
-        this.codigoCliente = codCliente;
-        this.codigoLivro = codLivro;
-        this.a = aIn;
+    public Devolucao(Aluguel aluguelIn, Date dataDevolucao) {
+        this.aluguel = aluguelIn;
         Date data = new Date();
         this.dataDevolucao = data;
     }
-     
-    public Aluguel getA() {
-        return a;
+
+    public Devolucao(int idDevolucaoIn, Aluguel aluguelIn, Date dataDevolucao) {
+        this.idDevolucao = idDevolucaoIn;
+        this.aluguel = aluguelIn;
+        Date data = new Date();
+        this.dataDevolucao = data;
     }
 
-    public void setA(Aluguel a) {
-        this.a = a;
+    public int getIdDevolucao() {
+        return idDevolucao;
+    }
+
+    public void setIdDevolucao(int idDevolucao) {
+        this.idDevolucao = idDevolucao;
     }
 
     public Date getDataDevolucao() {
         return dataDevolucao;
+    }
+
+    public Aluguel getAluguel() {
+        return aluguel;
+    }
+
+    public void setAluguel(Aluguel aluguel) {
+        this.aluguel = aluguel;
     }
 
     public void setDataDevolucao(Date dataDevolucao) {
@@ -56,7 +67,9 @@ public class Devolucao {
 
     @Override
     public String toString() {
-        return "Devolucao{" + "a=" + a + ", dataDevolucao=" + dataDevolucao + '}';
+        return "Dados da devolução: " + "\nCódigo da devolução: " + idDevolucao + "\nData da devolução: " + dataDevolucao
+                + "\nCódigo do aluguel: " + aluguel.getId() + "\nNome do cliente: " + aluguel.getC().getNome()
+                + "\nTitulo do livro: "+aluguel.getLivrosAlugados().getTitulo();
     }
 
 }
